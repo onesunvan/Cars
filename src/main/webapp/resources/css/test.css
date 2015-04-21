@@ -1,0 +1,53 @@
+@import url(http://fonts.googleapis.com/css?family=Erica+One);
+header{
+    background-image: url('../images/cars_background.jpg');
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 120px;
+}
+
+.shop-name{
+    text-align: center;
+    font-size: 100px;
+        /*font-family: 'CandyCane', arial;*/
+    font-family:  cursive;
+    font-weight: bold;
+    color: gold;
+    padding-top: 40px;	
+}
+
+.candy-div{
+    padding: 5px 5px 0px 5px;
+    margin-top: 50px;
+    text-align: center;
+    background-color: #EDE9EB;
+    border-radius: 10px;
+    border: 2px solid #B2AFB1;
+}
+
+.CandyName{
+    margin-top: 8px;
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'CandyCane'; /* имя шрифта для CSS правил */
+    src: local("Candy Cane"), /* проверяем наличие шрифта в ОС пользователя */
+        url("../fonts/Candcu__.ttf"); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+/*h1 span { 
+    background-color: #006dcc; 
+    border-bottom-right-radius: 33px;
+    border-bottom-left-radius:  33px;
+    border-top-right-radius:    33px;
+    border-top-left-radius:     33px;
+}*/
+.welcome {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    /*padding-top: 15px;*/
+    text-align: center;
+    border: 1px solid #eeeeee;
+}
