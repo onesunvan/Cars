@@ -39,7 +39,7 @@ public class RegistrationController {
             try {
                 userService.registerNewUser(user);
             } catch (UsernameExistException ex) {
-                bindingResult.addError(new ObjectError("username", "registration.usernameexists"));
+                bindingResult.rejectValue("username", "registration.usernameexists");
                 return "registration";
             }
             return "redirect:/";

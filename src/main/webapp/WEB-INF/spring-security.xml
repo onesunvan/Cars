@@ -13,6 +13,7 @@
     <http auto-config="true">
         <intercept-url pattern="/admin**" access="ROLE_ADMIN" />
         <intercept-url pattern="/editUser" access="ROLE_USER" />
+        <intercept-url pattern="/addContent" access="ROLE_ADMIN" />
         <form-login 
             login-page="/login" 
             default-target-url="/" 

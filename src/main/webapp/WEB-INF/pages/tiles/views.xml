@@ -29,4 +29,8 @@
         <put-attribute name="content"
             value="/WEB-INF/pages/tiles/user_edit_content.jsp"/>
     </definition>
+    <definition name="add-content" extends="welcome">
+        <put-attribute name="content"
+            value="/WEB-INF/pages/tiles/add-content_content.jsp"/>
+    </definition>
 </tiles-definitions>

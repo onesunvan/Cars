@@ -9,33 +9,33 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author ivan
  */
-@FieldMatch(first = "password", second = "confirmPassword", message = "registration.password.match")
+@FieldMatch(first = "password", second = "confirmPassword")
 public class UserEditForm {
     
-    @NotEmpty(message = "user.form.null")
-    @Size(min = 1, max = 25, message = "user.form.size")
+    @NotEmpty
+    @Size(min = 1, max = 25)
     private String firstName;
     
-    @NotEmpty(message = "user.form.null")
-    @Size(min = 1, max = 25, message = "user.form.size")
+    @NotEmpty
+    @Size(min = 1, max = 25)
     private String lastName;
     
-    @NotEmpty(message = "user.form.null")
-    @Size(min = 6, max = 25, message = "user.form.size")
+    @NotEmpty
+    @Size(min = 6, max = 25)
     private String oldPassword;
 
-    @NotEmpty(message = "user.form.null")
-    @Size(min = 6, max = 25, message = "user.form.size")
+    @NotEmpty
+    @Size(min = 6, max = 25)
     private String password;
 
-    @NotEmpty(message = "user.form.null")
-    @Size(min = 6, max = 25, message = "user.form.size")
+    @NotEmpty
+    @Size(min = 6, max = 25)
     private String confirmPassword;
 
-    @Email(message = "user.form.email")
+    @Email
     private String email;
     
-    @Size(min = 8, max = 8, message = "user.form.passportsize")
+    @Size(min = 8, max = 8)
     private String passport;
     
     @Override

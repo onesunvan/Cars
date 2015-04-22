@@ -4,6 +4,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
 <security:authorize access="hasRole('ROLE_USER')" var="isUser"/>
+<security:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin"/>
 
 <c:choose>
     <c:when test="${isUser}">
@@ -11,6 +12,19 @@
         <li> 
             <a href="<c:url value="/j_spring_security_logout" />" >
                 <s:message code="login.menu.logout"/>
+            </a>
+        </li>
+    </c:when>
+    <c:when test="${isAdmin}">
+        <li class="brand"><security:authentication property="principal.username" /></li>
+        <li> 
+            <a href="<c:url value="/j_spring_security_logout" />" >
+                <s:message code="login.menu.logout"/>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/addContent"/>">
+                <s:message code="login.menu.add_content"/>
             </a>
         </li>
     </c:when>

@@ -9,11 +9,7 @@
         <sf:form method="POST" commandName="user"
                  action="#">
             <h3><s:message code="label.registration"/></h3>
-            <s:bind path="user">
-                <c:forEach items="${status.errorMessages}" var="error">
-                    <div class="error"><s:message code="${error}"/></div>
-                </c:forEach>
-            </s:bind>
+            <sf:errors path="" cssClass="error"/>
             <table align="center">
                 <tr>
                     <td>
@@ -27,11 +23,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.username">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors cssClass="error" path="username"/>
                     </td>
                 </tr>
                 <tr>
@@ -46,11 +38,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.firstName">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors path="firstName" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -65,11 +53,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.lastName">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors path="lastName" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -84,11 +68,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.password">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors path="password" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -103,11 +83,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.confirmPassword">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors path="confirmPassword" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -122,11 +98,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.email">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors path="email" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -141,11 +113,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <s:bind path="user.passport">
-                            <c:forEach items="${status.errorMessages}" var="error">
-                                <div class="error"><s:message code="${error}"/></div>
-                            </c:forEach>
-                        </s:bind>
+                        <sf:errors path="passport" cssClass="error"/>
                     </td>
                 </tr>
             </table>
