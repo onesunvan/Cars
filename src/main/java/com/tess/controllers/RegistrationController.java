@@ -21,18 +21,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class RegistrationController {
-    
+
     @Autowired
     private UserService userService;
-    
-    @RequestMapping(value="/registration", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationPage(@ModelAttribute("user") UserForm user) {
         return "registration";
     }
-    
-    @RequestMapping(value="/registration", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String register(@ModelAttribute("user") @Valid UserForm user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult);
             return "registration";
         } else {
             try {

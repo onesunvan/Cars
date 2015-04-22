@@ -11,7 +11,15 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @FieldMatch(first = "password", second = "confirmPassword", message = "registration.password.match")
 public class UserEditForm {
-
+    
+    @NotEmpty(message = "user.form.null")
+    @Size(min = 1, max = 25, message = "user.form.size")
+    private String firstName;
+    
+    @NotEmpty(message = "user.form.null")
+    @Size(min = 1, max = 25, message = "user.form.size")
+    private String lastName;
+    
     @NotEmpty(message = "user.form.null")
     @Size(min = 6, max = 25, message = "user.form.size")
     private String oldPassword;
@@ -73,5 +81,21 @@ public class UserEditForm {
 
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

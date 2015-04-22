@@ -1,6 +1,7 @@
 package com.tess.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,22 +20,30 @@ public class UserInformation implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    
+
     private String email;
-    
+
     private String passport;
-    
+
     @OneToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+
+    @Column(name = "LAST_NAME")
+    private String lastName;
+
     public UserInformation() {
     }
 
-    public UserInformation(String email, String passport, User user) {
+    public UserInformation(String email, String passport, User user, String firstName, String lastName) {
         this.email = email;
         this.passport = passport;
         this.user = user;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -67,6 +76,22 @@ public class UserInformation implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 }

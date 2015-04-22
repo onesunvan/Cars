@@ -48,7 +48,7 @@ public class User implements Serializable {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    @JoinColumn(name = "USER_ID")
     private UserInformation userInformation;
-    
+
     public Long getId() {
         return id;
     }

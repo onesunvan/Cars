@@ -36,6 +36,8 @@ public class EditUserController {
         User userEntity = userService.getUserByName(name);
         user.setEmail(userEntity.getUserInformation().getEmail());
         user.setPassport(userEntity.getUserInformation().getPassport());
+        user.setFirstName(userEntity.getUserInformation().getFirstName());
+        user.setLastName(userEntity.getUserInformation().getLastName());
         return "user_edit";
     }
     
@@ -43,12 +45,13 @@ public class EditUserController {
     public String editUser(@ModelAttribute("user") @Valid UserEditForm user, BindingResult bindingResult) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         if (bindingResult.hasErrors()) {
+            return "user_edit";
+        } else {
             if (!userService.isOldPasswordValid(user.getOldPassword(),
                     username)) {
                 bindingResult.addError(new ObjectError("oldPassword", "useredit.oldpassword"));
+                return "user_edit";
             }
-            return "user_edit";
-        } else {
             userService.updateUserByUserEditForm(username, user);
             return "redirect:/";
         }

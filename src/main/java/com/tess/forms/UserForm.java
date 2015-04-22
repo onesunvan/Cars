@@ -11,7 +11,16 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @FieldMatch(first = "password", second = "confirmPassword", message = "registration.password.match")
 public class UserForm {
-
+    
+    @NotEmpty(message = "user.form.null")
+    @Size(min = 1, max = 25, message = "user.form.size")
+    private String firstName;
+    
+    @NotEmpty(message = "user.form.null")
+    @Size(min = 1, max = 25, message = "user.form.size")
+    private String lastName;
+    
+    
     @NotEmpty(message = "user.form.null")
     @Size(min = 6, max = 25, message = "user.form.size")
     private String username;
@@ -24,6 +33,7 @@ public class UserForm {
     @Size(min = 6, max = 25, message = "user.form.size")
     private String confirmPassword;
 
+    @NotEmpty(message = "user.form.null")
     @Email(message = "user.form.email")
     private String email;
     
@@ -73,5 +83,21 @@ public class UserForm {
 
     public void setPassport(String passport) {
         this.passport = passport;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

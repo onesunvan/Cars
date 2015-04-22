@@ -29,7 +29,8 @@ public class UserService {
         user.setPassword(userForm.getPassword());
         user.setEnabled(Boolean.TRUE);
         user.getRoles().add(new UserAuthorization(Role.ROLE_USER));
-        user.setUserInformation(new UserInformation(userForm.getEmail(), userForm.getPassport(), user));
+        user.setUserInformation(new UserInformation(userForm.getEmail(), 
+                userForm.getPassport(), user, userForm.getFirstName(), userForm.getLastName()));
         userRepository.save(user);
     }
     
@@ -38,6 +39,8 @@ public class UserService {
         user.setPassword(userForm.getPassword());
         user.getUserInformation().setEmail(userForm.getEmail());
         user.getUserInformation().setPassport(userForm.getPassport());
+        user.getUserInformation().setFirstName(userForm.getFirstName());
+        user.getUserInformation().setLastName(userForm.getLastName());
         userRepository.update(user);
     }
 
