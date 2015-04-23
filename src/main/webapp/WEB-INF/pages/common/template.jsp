@@ -12,7 +12,12 @@
         <title><s:message code="${title}"/></title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/test.css"/>">
         <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.css"/>"/>
+        <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
         <script type="text/javascript" src="<c:url value="/resources/bootstrap/js/bootstrap.js"/>" ></script>
+        <script type="text/javascript">
+            var appUrl = "<c:url value="/"/>"; 
+            console.log(appUrl);
+        </script>
     </head>
     <body>
         <header>
@@ -32,9 +37,7 @@
             </nav>
         </div>
         <div>
-            <div class='row-fluid'>
-                <t:insertAttribute name="content"/>
-            </div>
+            <t:insertAttribute name="content"/>
         </div>
     </body>
 </html>

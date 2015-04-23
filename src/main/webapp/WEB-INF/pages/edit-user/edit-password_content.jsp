@@ -7,40 +7,11 @@
 <div class="row-fluid span6 offset3" >
     <div class='row-fluid span6 offset3 login'>
         <sf:form method="POST" commandName="user"
-                 action="#">
-            <h3><s:message code="useredit.title"/></h3>
+                 action="#"
+                 enctype="multipart/form-data">
+            <h3><s:message code="useredit.updatepassword"/></h3>
             <sf:errors cssClass="error" path=""/>
             <table align="center">
-                <tr>
-                    <td>
-                        <label for="first_name"><s:message code="registration.first_name"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="registration.first_name"/></c:set>
-                        <sf:input path="firstName"
-                                  class="form-control" id="first_name" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors cssClass="error" path="firstName"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="last_name"><s:message code="registration.last_name"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="registration.last_name"/></c:set>
-                        <sf:input path="lastName"
-                                  class="form-control" id="last_name" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors cssClass="error" path="lastName"/>
-                    </td>
-                </tr>
                 <tr>
                     <td>
                         <label for="oldpasswordF"><s:message code="edituser.oldpassword"/></label>
@@ -84,36 +55,6 @@
                 <tr>
                     <td colspan="2">
                         <sf:errors cssClass="error" path="confirmPassword"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="emailF"><s:message code="registration.email"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="registration.email"/></c:set>
-                        <sf:input path="email"
-                                  class="form-control" id="emailF" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors cssClass="error" path="email"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="passportF"><s:message code="registration.passport"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="registration.passport"/></c:set>
-                        <sf:input path="passport"
-                                  class="form-control" id="passportF" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors cssClass="error" path="passport"/>
                     </td>
                 </tr>
             </table>

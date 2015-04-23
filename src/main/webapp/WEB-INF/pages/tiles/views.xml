@@ -4,33 +4,38 @@
 "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
     <definition name="login" 
-            template="/WEB-INF/pages/tiles/template.jsp">
+            template="/WEB-INF/pages/common/template.jsp">
         <put-attribute name="title" value="welcome.title"/>
         <put-attribute name="menu"
-               value="/WEB-INF/pages/tiles/language_frag.jsp" />
+               value="/WEB-INF/pages/common/language_frag.jsp" />
         <put-attribute name="content"
-            value="/WEB-INF/pages/tiles/login_content.jsp"/>
+            value="/WEB-INF/pages/login/login_content.jsp"/>
     </definition>
     <definition name="welcome" extends="login">
         <put-attribute name="content"
-            value="/WEB-INF/pages/tiles/welcome_content.jsp"/>
+            value="/WEB-INF/pages/main/welcome_content.jsp"/>
         <put-attribute name="login"
-            value="/WEB-INF/pages/tiles/login_menu.jsp"/>
+            value="/WEB-INF/pages/login/login_menu.jsp"/>
     </definition>
     <definition name="admin" extends="login">
         <put-attribute name="content"
-            value="/WEB-INF/pages/tiles/admin_content.jsp"/>
+            value="/WEB-INF/pages/admin/admin_content.jsp"/>
     </definition>
     <definition name="registration" extends="login">
         <put-attribute name="content"
-            value="/WEB-INF/pages/tiles/registration_content.jsp"/>
+            value="/WEB-INF/pages/registration/registration_content.jsp"/>
     </definition>
     <definition name="user_edit" extends="welcome">
         <put-attribute name="content"
-            value="/WEB-INF/pages/tiles/user_edit_content.jsp"/>
+            value="/WEB-INF/pages/edit-user/user_edit_content.jsp"/>
     </definition>
     <definition name="add-content" extends="welcome">
         <put-attribute name="content"
-            value="/WEB-INF/pages/tiles/add-content_content.jsp"/>
+            value="/WEB-INF/pages/admin/add-content_content.jsp"/>
+    </definition>
+    <definition name="user-datas" template="/WEB-INF/pages/common/user-datas.jsp"/>
+    <definition name="edit-password" extends="welcome">
+        <put-attribute name="content"
+            value="/WEB-INF/pages/edit-user/edit-password_content.jsp"/>
     </definition>
 </tiles-definitions>

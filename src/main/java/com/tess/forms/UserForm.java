@@ -22,7 +22,7 @@ public class UserForm {
     
     
     @NotEmpty
-    @Size(min = 6, max = 25)
+    @Size(min = 4, max = 25)
     private String username;
 
     @NotEmpty

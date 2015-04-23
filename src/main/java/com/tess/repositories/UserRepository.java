@@ -11,5 +11,4 @@ public interface UserRepository extends Repository<User> {
 
     public User getUserByName(String username);
 
-    public boolean isOldPasswordValid(String oldPassword, String username);
 }

@@ -13,6 +13,8 @@
     <http auto-config="true">
         <intercept-url pattern="/admin**" access="ROLE_ADMIN" />
         <intercept-url pattern="/editUser" access="ROLE_USER" />
+        <intercept-url pattern="/editPassword" access="ROLE_USER" />
+        <intercept-url pattern="/avatarImg" access="ROLE_USER" />
         <intercept-url pattern="/addContent" access="ROLE_ADMIN" />
         <form-login 
             login-page="/login" 
@@ -32,7 +34,4 @@
         </authentication-provider>    
     </authentication-manager>
  
-    <beans:bean id="encoder" 
-                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-    </beans:bean>
 </beans:beans>

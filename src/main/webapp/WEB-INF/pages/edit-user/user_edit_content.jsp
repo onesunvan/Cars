@@ -5,27 +5,13 @@
            prefix="sf"%>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">
 <div class="row-fluid span6 offset3" >
-    <div class='span6 row-fluid offset3 login'>
+    <div class='row-fluid span6 offset3 login'>
         <sf:form method="POST" commandName="user"
-                 action="#">
-            <h3><s:message code="label.registration"/></h3>
-            <sf:errors path="" cssClass="error"/>
+                 action="#"
+                 enctype="multipart/form-data">
+            <h3><s:message code="useredit.title"/></h3>
+            <sf:errors cssClass="error" path=""/>
             <table align="center">
-                <tr>
-                    <td>
-                        <label for="name"><s:message code="login.name"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="login.name"/></c:set>
-                        <sf:input path="username"
-                                  class="form-control" id="name" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors cssClass="error" path="username"/>
-                    </td>
-                </tr>
                 <tr>
                     <td>
                         <label for="first_name"><s:message code="registration.first_name"/></label>
@@ -38,7 +24,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors path="firstName" cssClass="error"/>
+                        <sf:errors cssClass="error" path="firstName"/>
                     </td>
                 </tr>
                 <tr>
@@ -53,37 +39,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors path="lastName" cssClass="error"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="passwordF"><s:message code="login.password"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="login.password"/></c:set>
-                        <sf:password path="password"
-                                     class="form-control" id="passwordF" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors path="password" cssClass="error"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="cpasswordF"><s:message code="registration.confirmpassword"/></label>
-                    </td>
-                    <td>
-                        <c:set var="loginNameText"><s:message code="registration.confirmpassword"/></c:set>
-                        <sf:password path="confirmPassword"
-                                     class="form-control" id="cpasswordF" placeholder="${loginNameText}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <sf:errors path="confirmPassword" cssClass="error"/>
+                        <sf:errors cssClass="error" path="lastName"/>
                     </td>
                 </tr>
                 <tr>
@@ -98,7 +54,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors path="email" cssClass="error"/>
+                        <sf:errors cssClass="error" path="email"/>
                     </td>
                 </tr>
                 <tr>
@@ -113,11 +69,32 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors path="passport" cssClass="error"/>
+                        <sf:errors cssClass="error" path="passport"/>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <s:message code="addcontent.image"/>
+                    </td>
+                    <td>
+                        <input type="file" name="uploadFile" class=" btn-mini"/>
+                    </td>
+                </tr>
+                <c:if test="${not empty imageErrors}">
+                    <tr>
+                        <td colspan="2">
+                            <c:forEach items="${imageErrors}" var="error">
+                                <div class="error"><s:message code="${error}"/></div>
+                            </c:forEach>
+                        </td>
+                    </tr>
+                </c:if>
             </table>
-            <input type="submit" class="btn btn-primary ss" value="<s:message code="label.registration"/>"/>
-        </sf:form>
+            <a href="<c:url value="/editPassword"/>">
+                <s:message code="useredit.updatepassword"/>
+            </a>
+            <br/>
+            <input type="submit" class="btn btn-primary ss" value="<s:message code="useredit.updateuser"/>"/>
+        </sf:form> 
     </div>
 </div>

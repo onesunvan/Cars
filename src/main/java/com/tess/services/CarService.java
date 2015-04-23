@@ -18,5 +18,10 @@ public class CarService {
     public void saveCar(Car car) {
         carRepository.save(car);
     }
+
+    public byte[] getCarImageById(Long id) {
+        Car car = carRepository.read(id);
+        return car.getImage();
+    }
     
 }

@@ -31,4 +31,10 @@ public class JpaCarRepository extends JpaEntityRepository<Car>
         return entity.getId();
     }
     
+    @Transactional
+    @Override
+    public Car read(Long id) {
+        return super.read(id);
+    } 
+    
 }

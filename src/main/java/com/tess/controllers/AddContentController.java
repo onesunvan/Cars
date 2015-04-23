@@ -2,6 +2,7 @@ package com.tess.controllers;
 
 import com.tess.entities.Car;
 import com.tess.forms.CarForm;
+import com.tess.images.ImageUtil;
 import com.tess.services.CarService;
 import com.tess.services.UsernameExistException;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class AddContentController {
             @RequestParam(value = "uploadFile") MultipartFile image,
             Model model) {
         List<String> imageErrors = new LinkedList<>();
-        byte[] imageBytes = validateImage(image, imageErrors);
+        byte[] imageBytes = ImageUtil.validateImage(image, imageErrors);
         if (!imageErrors.isEmpty()) {
             model.addAttribute("imageErrors", imageErrors);
         }
@@ -60,18 +61,5 @@ public class AddContentController {
     }
     
     
-    private byte[] validateImage(MultipartFile image, List<String> errors) {
-        if (image.isEmpty()) {
-            errors.add("addcontent.imageempty");
-        } else if (!image.getContentType().equals("image/jpeg")) {
-            errors.add("addcontent.notjpeg");
-        }
-        byte[] imageBytes = {};
-        try {
-            imageBytes = image.getBytes();
-        } catch (IOException ex) {
-            errors.add("addcontent.jpgerror");
-        }
-        return imageBytes;
-    }
+    
 }
