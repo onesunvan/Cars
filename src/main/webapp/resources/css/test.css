@@ -51,3 +51,7 @@ header{
     text-align: center;
     border: 1px solid #eeeeee;
 }
+.myimg {
+    width : 300px;
+    height : 300px;
+}

@@ -10,6 +10,8 @@ public interface Repository<E> {
 
     List<E> readAll();
     
+    List<E> readLimitOffset(Integer limit, Integer offset);
+    
     E read(Long id);
     
     Long save(E entity);

@@ -3,6 +3,7 @@ package com.tess.repositories.jpa;
 import com.tess.entities.Car;
 import com.tess.repositories.CarRepository;
 import java.util.List;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
@@ -18,10 +19,9 @@ public class JpaCarRepository extends JpaEntityRepository<Car>
         super(Car.class);
     }
 
-    @Transactional
     @Override
-    public List<Car> readAll() {
-        return readAll("Car.findAll");
+    protected String getFindAllQuery() {
+        return "Car.findAll";
     }
 
     @Transactional
@@ -36,5 +36,39 @@ public class JpaCarRepository extends JpaEntityRepository<Car>
     public Car read(Long id) {
         return super.read(id);
     } 
+    
+    @Transactional
+    @Override
+    public List<Car> readLimitOffset(Integer limit, Integer offset) {
+        return super.readLimitOffset(limit, offset);
+    }
+
+    @Transactional
+    @Override
+    public List<Car> readLimitOffsetIfExists(int limit, int offset) {
+        TypedQuery<Car> query = em.createNamedQuery("Car.findIfExists", clazz);
+        List<Car> cars = query.setMaxResults(limit).setFirstResult(offset).getResultList();
+        return cars;
+    }
+
+    @Transactional
+    @Override
+    public List<Car> readLimitOffsetLikeIfExists(int limit, int offset, String filter) {
+        TypedQuery<Car> query = em.createNamedQuery("Car.findLikeIfExists", clazz);
+        List<Car> cars = query.setMaxResults(limit).setFirstResult(offset)
+                .setParameter("filter", filter).getResultList();
+        return cars;
+    }
+
+    @Transactional
+    @Override
+    public List<Car> readLimitOffsetLike(int limit, int offset, String filter) {
+        TypedQuery<Car> query = em.createNamedQuery("Car.findLike", clazz);
+        List<Car> cars = query.setMaxResults(limit).setFirstResult(offset)
+                .setParameter("filter", filter).getResultList();
+        return cars;
+    }
+
+
     
 }

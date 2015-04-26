@@ -18,7 +18,7 @@ public class JpaUserRepository extends JpaEntityRepository<User>
     @Transactional
     @Override
     public List<User> readAll() {
-        return readAll("User.findAll");
+        return super.readAll();
     }
 
     @Transactional
@@ -48,5 +48,10 @@ public class JpaUserRepository extends JpaEntityRepository<User>
     @Override
     public User read(Long id) {
         return super.read(id);
+    }
+
+    @Override
+    protected String getFindAllQuery() {
+        return "User.findAll";
     }
 }

@@ -2,6 +2,7 @@ package com.tess.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CAR")
 @NamedQueries({
-    @NamedQuery(name = "Car.findAll", query = "SELECT u FROM Car u")
+    @NamedQuery(name = "Car.findAll", query = "SELECT u FROM Car u"),
+    @NamedQuery(name = "Car.findIfExists", query = "SELECT u FROM Car u WHERE u.ifExists=TRUE"),
+    @NamedQuery(name = "Car.findLike", query = "SELECT u FROM Car u WHERE u.brand LIKE :filter OR u.model LIKE :filter"),
+    @NamedQuery(name = "Car.findLikeIfExists", query = "SELECT u FROM Car u WHERE u.ifExists=TRUE AND "
+            + "(u.brand LIKE :filter OR u.model LIKE :filter)")
 })
 public class Car implements Serializable {
     @Id
@@ -35,6 +40,9 @@ public class Car implements Serializable {
     @Basic(fetch = FetchType.EAGER)
     private byte[] image;   
 
+    @Column(name = "IF_EXISTS")
+    private Boolean ifExists;
+    
     public Car() {
     }
 
@@ -83,6 +91,14 @@ public class Car implements Serializable {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Boolean getExists() {
+        return ifExists;
+    }
+
+    public void setExists(Boolean ifExists) {
+        this.ifExists = ifExists;
     }
     
 }

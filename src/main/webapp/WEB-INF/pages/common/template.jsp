@@ -37,7 +37,9 @@
             </nav>
         </div>
         <div>
-            <t:insertAttribute name="content"/>
+            <div class='row-fluid'>
+                <t:insertAttribute name="content"/>
+            </div>
         </div>
     </body>
 </html>

@@ -22,10 +22,20 @@ public abstract class JpaEntityRepository <E> implements Repository <E> {
     @PersistenceContext
     protected EntityManager em;
     
-    protected List<E> readAll(String namedQuery) {
-        TypedQuery<E> query = em.createNamedQuery(namedQuery, clazz);
-        List<E> pizzas = query.getResultList();
-        return pizzas;
+    protected abstract String getFindAllQuery();
+    
+    @Override
+    public List<E> readAll() {
+        TypedQuery<E> query = em.createNamedQuery(getFindAllQuery(), clazz);
+        List<E> entities = query.getResultList();
+        return entities;
+    }
+    
+    @Override
+    public List<E> readLimitOffset(Integer limit, Integer offset) {
+        TypedQuery<E> query = em.createNamedQuery(getFindAllQuery(), clazz);
+        List<E> entities = query.setMaxResults(limit).setFirstResult(offset).getResultList();
+        return entities;
     }
     
     public void saveEntity(E entity) {

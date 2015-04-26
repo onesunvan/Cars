@@ -38,4 +38,13 @@
         <put-attribute name="content"
             value="/WEB-INF/pages/edit-user/edit-password_content.jsp"/>
     </definition>
+    <definition name="cars" template="/WEB-INF/pages/main/dynamic_cars.jsp"/>
+    <definition name="car" extends="welcome">
+        <put-attribute name="content"
+            value="/WEB-INF/pages/car/car.jsp"/>
+    </definition>
+    <definition name="errorpage" extends="welcome">
+        <put-attribute name="content"
+            value="/WEB-INF/pages/common/error-content.jsp"/>
+    </definition>
 </tiles-definitions>

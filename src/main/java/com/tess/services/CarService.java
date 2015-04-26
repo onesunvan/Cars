@@ -2,6 +2,7 @@ package com.tess.services;
 
 import com.tess.entities.Car;
 import com.tess.repositories.CarRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,32 @@ public class CarService {
     public byte[] getCarImageById(Long id) {
         Car car = carRepository.read(id);
         return car.getImage();
+    }
+
+    public List<Car> getCarsOnPageIfExists(Integer number) {
+        return carRepository.readLimitOffsetIfExists(9, number * 9);
+    }
+
+    public List<Car> getCarsOnPage(Integer number) {
+        return carRepository.readLimitOffset(9, number * 9);
+    }
+
+    public List<Car> getCarsOnPageLikeIfExists(Integer number, String filter) {
+        return carRepository.readLimitOffsetLikeIfExists(9, number * 9, filter);
+    }
+
+
+    public List<Car> getCarsOnPageLike(Integer number, String filter) {
+        return carRepository.readLimitOffsetLike(9, number * 9, filter);
+    }
+
+    public Car getCarById(Long id) {
+        Car car = carRepository.read(id);
+        if (car == null) {
+            throw new CarNotFoundException();
+        } else {
+            return car;
+        }
     }
     
 }
