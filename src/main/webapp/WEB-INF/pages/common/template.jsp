@@ -38,6 +38,11 @@
         </div>
         <div>
             <div class='row-fluid'>
+                <c:if test="${not empty successMessage}">
+                    <script type="text/javascript">
+                        alert("<s:message code="${successMessage}"/>");
+                    </script>
+                </c:if>
                 <t:insertAttribute name="content"/>
             </div>
         </div>

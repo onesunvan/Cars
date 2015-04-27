@@ -37,7 +37,7 @@ public class Car implements Serializable {
     private Integer price;
     
     @Lob
-    @Basic(fetch = FetchType.EAGER)
+    @Basic(fetch = FetchType.LAZY)
     private byte[] image;   
 
     @Column(name = "IF_EXISTS")
@@ -93,11 +93,11 @@ public class Car implements Serializable {
         this.image = image;
     }
 
-    public Boolean getExists() {
+    public Boolean getIfExists() {
         return ifExists;
     }
 
-    public void setExists(Boolean ifExists) {
+    public void setIfExists(Boolean ifExists) {
         this.ifExists = ifExists;
     }
     

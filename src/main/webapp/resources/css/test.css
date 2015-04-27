@@ -9,7 +9,7 @@ header{
 .shop-name{
     text-align: center;
     font-size: 100px;
-        /*font-family: 'CandyCane', arial;*/
+    /*font-family: 'CandyCane', arial;*/
     font-family:  cursive;
     font-weight: bold;
     color: gold;
@@ -54,4 +54,12 @@ header{
 .myimg {
     width : 300px;
     height : 300px;
+}
+
+.success_message {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: chartreuse;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }

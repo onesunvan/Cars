@@ -64,7 +64,8 @@ public class RegistrationController {
                 bindingResult.rejectValue("username", "registration.usernameexists");
                 return "registration";
             }
-            return "redirect:/";
+            model.addAttribute("successMessage", "registration.success");
+            return "forward:/";
         }
     }
     

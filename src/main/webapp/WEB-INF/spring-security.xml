@@ -17,6 +17,7 @@
         <intercept-url pattern="/avatarImg" access="ROLE_USER" />
         <intercept-url pattern="/addContent" access="ROLE_ADMIN" />
         <intercept-url pattern="/bookCar" access="ROLE_USER" />
+        <intercept-url pattern="/showOrders" access="ROLE_ADMIN"/>
         <form-login 
             login-page="/login" 
             default-target-url="/" 

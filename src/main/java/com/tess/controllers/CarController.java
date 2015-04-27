@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -70,11 +72,28 @@ public class CarController {
         model.addAttribute("car", car);
         return "car";
     }
+    
+    @RequestMapping(value = "/deleteCar")
+    public String deleteCar(@RequestParam("carId") Integer id, Model model,
+             final RedirectAttributes redirectAttributes) {
+        carService.disableCar(new Long(id));
+        redirectAttributes.addFlashAttribute("successMessage", "car.cardeleted");
+        return "redirect:/";
+    }
+    
+    @RequestMapping(value = "/restoreCar")
+    public String restoreCar(@RequestParam("carId") Integer id, Model model,
+             final RedirectAttributes redirectAttributes) {
+        carService.restoreCar(new Long(id));
+        redirectAttributes.addFlashAttribute("successMessage", "car.carrestored");
+        return "redirect:/";
+    }
+    
      
     @ExceptionHandler(CarNotFoundException.class)
     public ModelAndView carNotFound(CarNotFoundException exception) {
         ModelAndView modelAndView = new ModelAndView("errorpage");
-        modelAndView.addObject("message", "carnotfound");
+        modelAndView.addObject("code", "carnotfound");
         return modelAndView;
     }
     

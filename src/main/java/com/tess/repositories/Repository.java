@@ -14,7 +14,7 @@ public interface Repository<E> {
     
     E read(Long id);
     
-    Long save(E entity);
+    void save(E entity);
     
     void delete(E entity);
     

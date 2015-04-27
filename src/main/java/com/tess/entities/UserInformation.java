@@ -39,7 +39,7 @@ public class UserInformation implements Serializable {
     private String lastName;
 
     @Lob
-    @Basic(fetch = FetchType.EAGER)
+    @Basic(fetch = FetchType.LAZY)
     private byte[] image;
     
     public UserInformation() {

@@ -6,6 +6,18 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">
 <div class="row-fluid span6 offset3" >
     <div class='span6 row-fluid offset3 login'>
-        <span class="error"><s:message  code="${message}"/></span>
+        <span class="error">
+            <c:choose>
+                <c:when test="${not empty code}">
+                    <s:message  code="${code}"/>
+                </c:when>
+                <c:otherwise>
+                    ${message}
+                </c:otherwise>
+            </c:choose>
+        </span>
     </div>
 </div>
+<!-- 
+${exception_message}
+-->

@@ -38,7 +38,9 @@ public abstract class JpaEntityRepository <E> implements Repository <E> {
         return entities;
     }
     
-    public void saveEntity(E entity) {
+    @Transactional
+    @Override
+    public void save(E entity) {
         em.persist(entity);
     }
     

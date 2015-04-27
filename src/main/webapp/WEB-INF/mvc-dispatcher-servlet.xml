@@ -61,4 +61,9 @@
         <property name="defaultEncoding" value="utf-8"/>
     </bean>
     
+    <bean
+	class="com.tess.exceptions.CustomExceptionResolver">
+        <property name="defaultErrorView" value="errorpage"/>
+    </bean>
+    
 </beans>

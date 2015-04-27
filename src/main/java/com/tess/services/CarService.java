@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CarService {
-    
+
     @Autowired
     private CarRepository carRepository;
-    
+
     public void saveCar(Car car) {
         carRepository.save(car);
     }
@@ -37,7 +37,6 @@ public class CarService {
         return carRepository.readLimitOffsetLikeIfExists(9, number * 9, filter);
     }
 
-
     public List<Car> getCarsOnPageLike(Integer number, String filter) {
         return carRepository.readLimitOffsetLike(9, number * 9, filter);
     }
@@ -50,5 +49,25 @@ public class CarService {
             return car;
         }
     }
-    
+
+    public void disableCar(Long id) {
+        Car car = carRepository.read(id);
+        if (car == null) {
+            throw new CarNotFoundException();
+        } else {
+            car.setIfExists(Boolean.FALSE);
+            carRepository.update(car);
+        }
+    }
+
+    public void restoreCar(Long id) {
+        Car car = carRepository.read(id);
+        if (car == null) {
+            throw new CarNotFoundException();
+        } else {
+            car.setIfExists(Boolean.TRUE);
+            carRepository.update(car);
+        }
+    }
+
 }

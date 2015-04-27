@@ -24,12 +24,6 @@ public class JpaCarRepository extends JpaEntityRepository<Car>
         return "Car.findAll";
     }
 
-    @Transactional
-    @Override
-    public Long save(Car entity) {
-        saveEntity(entity);
-        return entity.getId();
-    }
     
     @Transactional
     @Override

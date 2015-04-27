@@ -11,7 +11,7 @@
         <table>
             <tr>
                 <td>
-                    <img src="<c:url value="/avatarImg"/>" width="200" height="200"/>
+                    <img src="<c:url value="/avatarImg"/>" style="width:200px; height:200px;" width="200" height="200"/>
                 </td>
             </tr>
             <tr>

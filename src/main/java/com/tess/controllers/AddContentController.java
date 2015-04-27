@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -41,7 +42,7 @@ public class AddContentController {
     @RequestMapping(method = RequestMethod.POST)
     public String addContent(@ModelAttribute("car") @Valid CarForm car, BindingResult bindingResult,
             @RequestParam(value = "uploadFile") MultipartFile image,
-            Model model) {
+            Model model, final RedirectAttributes redirectAttributes) {
         List<String> imageErrors = new LinkedList<>();
         byte[] imageBytes = ImageUtil.validateImage(image, imageErrors);
         if (!imageErrors.isEmpty()) {
@@ -55,7 +56,9 @@ public class AddContentController {
             }
             Car carEntity = new Car(car.getBrand(), car.getModel(), 
                     car.getPrice(), imageBytes);
+            carEntity.setIfExists(Boolean.TRUE);
             carService.saveCar(carEntity);
+            redirectAttributes.addFlashAttribute("successMessage", "addcontent.success");
             return "redirect:/";
         }
     }
