@@ -21,6 +21,7 @@ public class JpaUserRepository extends JpaEntityRepository<User>
         return super.readAll();
     }
 
+    @Transactional
     @Override
     public boolean isUsernameUnique(String username) {
         TypedQuery<User> query = em.createNamedQuery("User.findByUsername", User.class)

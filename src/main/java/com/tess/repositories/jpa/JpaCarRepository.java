@@ -50,7 +50,7 @@ public class JpaCarRepository extends JpaEntityRepository<Car>
     public List<Car> readLimitOffsetLikeIfExists(int limit, int offset, String filter) {
         TypedQuery<Car> query = em.createNamedQuery("Car.findLikeIfExists", clazz);
         List<Car> cars = query.setMaxResults(limit).setFirstResult(offset)
-                .setParameter("filter", filter).getResultList();
+                .setParameter("filter", "%" + filter + "%").getResultList();
         return cars;
     }
 
@@ -59,7 +59,7 @@ public class JpaCarRepository extends JpaEntityRepository<Car>
     public List<Car> readLimitOffsetLike(int limit, int offset, String filter) {
         TypedQuery<Car> query = em.createNamedQuery("Car.findLike", clazz);
         List<Car> cars = query.setMaxResults(limit).setFirstResult(offset)
-                .setParameter("filter", filter).getResultList();
+                .setParameter("filter", "%" + filter + "%").getResultList();
         return cars;
     }
 
