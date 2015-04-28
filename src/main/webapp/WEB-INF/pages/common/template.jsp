@@ -12,10 +12,14 @@
         <title><s:message code="${title}"/></title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/test.css"/>">
         <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.css"/>"/>
+        <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css"/>"/>
+        <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-responsive.css"/>"/>
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
         <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
         <script type="text/javascript" src="<c:url value="/resources/bootstrap/js/bootstrap.js"/>" ></script>
         <script type="text/javascript">
-            var appUrl = "<c:url value="/"/>"; 
+            var appUrl = "<c:url value="/"/>";
             console.log(appUrl);
         </script>
     </head>
@@ -38,13 +42,31 @@
         </div>
         <div>
             <div class='row-fluid'>
-                <c:if test="${not empty successMessage}">
-                    <script type="text/javascript">
-                        alert("<s:message code="${successMessage}"/>");
-                    </script>
-                </c:if>
                 <t:insertAttribute name="content"/>
             </div>
         </div>
+        <c:if test="${not empty successMessage}">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#myModal").modal('show');
+                });
+            </script>
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"><s:message code="welcome.message"/></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><s:message code="${successMessage}"/></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><s:message code="welcome.close"/></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
     </body>
 </html>

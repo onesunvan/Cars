@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -45,7 +46,7 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String register(@ModelAttribute("user") @Valid UserForm user, 
             BindingResult bindingResult, @RequestParam(value = "uploadFile") MultipartFile image,
-            Model model) {
+            Model model, final RedirectAttributes redirectAttributes) {
         List<String> imageErrors = new LinkedList<>();
         byte[] imageBytes = ImageUtil.validateImage(image, imageErrors);
         if (!imageErrors.isEmpty()) {
@@ -64,8 +65,8 @@ public class RegistrationController {
                 bindingResult.rejectValue("username", "registration.usernameexists");
                 return "registration";
             }
-            model.addAttribute("successMessage", "registration.success");
-            return "forward:/";
+            redirectAttributes.addFlashAttribute("successMessage", "registration.success");
+            return "redirect:/";
         }
     }
     

@@ -20,7 +20,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ORDERS")
 @NamedQueries({
-    @NamedQuery(name = "Order.findAll", query = "SELECT o FROM Orders o")
+    @NamedQuery(name = "Order.findAll", query = "SELECT o FROM Orders o"),
+    @NamedQuery(name = "Order.amount", query = "SELECT count(o) FROM Orders o"),
+    @NamedQuery(name = "Order.userAmount", query = "SELECT count(o) FROM Orders o WHERE o.user.username=:username"),
+    @NamedQuery(name = "Orders.findForUser", query = "SELECT o FROM Orders o WHERE o.user.username=:username")
 })
 public class Orders implements Serializable {
 
@@ -28,11 +31,11 @@ public class Orders implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY )
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "USER_ID")
     private User user;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CAR_ID")
     private Car car;
     

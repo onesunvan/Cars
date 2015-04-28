@@ -1,6 +1,7 @@
 package com.tess.services;
 
 import com.tess.entities.Car;
+import com.tess.entities.OrderStatus;
 import com.tess.entities.Orders;
 import com.tess.entities.User;
 import com.tess.repositories.OrderRepository;
@@ -28,6 +29,7 @@ public class OrderService {
         Orders order = new Orders();
         order.setCar(car);
         order.setUser(user);
+        order.setStatus(OrderStatus.NEW);
         orderRepository.save(order);
         return order;
     }
@@ -35,5 +37,34 @@ public class OrderService {
     public List<Orders> getOrdersOnPage(Integer pageNumber) {
         return orderRepository.readLimitOffset(9, (pageNumber - 1) * 9);
     }
+    
+    public Long getAmountOfOrders() {
+        return orderRepository.getCount();
+    }
 
+    public void acceptOrder(Long id) {
+        Orders order = orderRepository.read(id);
+        if (order == null) {
+            throw new IllegalArgumentException();
+        }
+        order.setStatus(OrderStatus.ACCEPTED);
+        orderRepository.update(order);
+    }
+
+    public void declineOrder(Long id) {
+        Orders order = orderRepository.read(id);
+        if (order == null) {
+            throw new IllegalArgumentException();
+        }
+        order.setStatus(OrderStatus.DECLINED);
+        orderRepository.update(order);
+    }
+
+    public List<Orders> getUserOrdersOnPage(Integer pageNumber, String name) {
+        return orderRepository.readLimitOffsetForUser(9, (pageNumber - 1) * 9, name);
+    }
+
+    public Long getAmountOfUserOrders(String username) {
+        return orderRepository.getAmountOfUserOrders(username);
+    }
 }

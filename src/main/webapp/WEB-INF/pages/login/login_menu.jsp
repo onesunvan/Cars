@@ -19,6 +19,11 @@
                 <s:message code="login.menu.logout"/>
             </a>
         </li>
+        <li>
+            <a href="<c:url value="/showMyOrders"/>">
+                <s:message code="login.showmyorders"/>
+            </a>
+        </li>
         <div class="b-popup" id="popup1">
             <div class="b-popup-content" id="popup-content-id">
 <!--                Text in Popup

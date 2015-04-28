@@ -37,7 +37,7 @@ public class Car implements Serializable {
     private Integer price;
     
     @Lob
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private byte[] image;   
 
     @Column(name = "IF_EXISTS")
