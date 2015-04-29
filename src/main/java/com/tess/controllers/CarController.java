@@ -62,6 +62,7 @@ public class CarController {
                 cars = carService.getCarsOnPageIfExists(number);
             }
         }
+        System.out.println(cars.size());
         model.addAttribute("cars", cars);
         return "cars";
     }

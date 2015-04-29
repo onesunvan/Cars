@@ -12,20 +12,18 @@
         <title><s:message code="${title}"/></title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/test.css"/>">
         <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.css"/>"/>
-        <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css"/>"/>
         <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-responsive.css"/>"/>
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
-        <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+        <script src="<c:url value="/resources/js/jquery-2.0.2.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/bootstrap/js/bootstrap.js"/>" ></script>
         <script type="text/javascript">
             var appUrl = "<c:url value="/"/>";
-            console.log(appUrl);
         </script>
     </head>
     <body>
         <header>
-            <h1 class='shop-name'><s:message code="welcome.carshow"/></h1>
+            <!--<h1 class='shop-name'><s:message code="welcome.carshow"/></h1>-->
         </header>
         <div class="navbar">
             <nav class="navbar-inner">

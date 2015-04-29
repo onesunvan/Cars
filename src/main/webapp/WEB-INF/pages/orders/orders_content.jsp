@@ -28,7 +28,7 @@
                                 ${order.car.brand} ${order.car.model}
                             </td>
                             <td>
-                                ${order.status}
+                                <s:message code="${order.status}"/>
                             </td>
                             <td>
                                 <c:if test="${not empty order.message}">${order.message}</c:if>

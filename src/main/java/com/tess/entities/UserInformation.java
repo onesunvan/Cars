@@ -38,8 +38,8 @@ public class UserInformation implements Serializable {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Lob
-    @Basic(fetch = FetchType.EAGER)
+//    @Lob
+//    @Basic(fetch = FetchType.EAGER)
     private byte[] image;
     
     public UserInformation() {

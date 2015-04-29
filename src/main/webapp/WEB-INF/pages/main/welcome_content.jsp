@@ -27,6 +27,7 @@
             data: ("number=" + 0) <c:if test="${not empty filter}"> + "&filter=" + "${filter}"</c:if> ,
             success: function (result) {
                 console.log(0);
+                console.log("query");
                 $("#div1").html(result);
                 wrap.innerHTML += result;
             }});

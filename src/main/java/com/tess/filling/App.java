@@ -32,6 +32,7 @@ public class App {
             String model = carModels.get((int)(Math.random() * carModels.size()));
             String brand = carBrands.get((int)(Math.random() * carBrands.size()));
             Car car = new Car(brand, model, price, image);
+            car.setIfExists(Boolean.TRUE);
             carRepository.save(car);
         }
         

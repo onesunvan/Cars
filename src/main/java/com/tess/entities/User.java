@@ -46,7 +46,7 @@ public class User implements Serializable {
     @JoinColumn(name = "USER_ID")
     private final Set<UserAuthorization> roles = new HashSet<>();
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private UserInformation userInformation;
 
     public Long getId() {
