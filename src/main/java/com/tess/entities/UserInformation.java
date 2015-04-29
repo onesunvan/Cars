@@ -19,6 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USER_INFORMATION")
 public class UserInformation implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue

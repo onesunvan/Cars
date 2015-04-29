@@ -26,7 +26,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Orders.findForUser", query = "SELECT o FROM Orders o WHERE o.user.username=:username")
 })
 public class Orders implements Serializable {
-
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue
     private Long id;

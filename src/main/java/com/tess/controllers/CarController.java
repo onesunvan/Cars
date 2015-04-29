@@ -69,7 +69,7 @@ public class CarController {
     
     @RequestMapping(value = "/car/{id}", method = RequestMethod.GET)
     public String showCar(@PathVariable("id") Integer id, Model model) {
-        Car car = carService.getCarById(new Long(id));
+        Car car = carService.getCarById(Long.valueOf(id));
         model.addAttribute("car", car);
         return "car";
     }
@@ -77,7 +77,7 @@ public class CarController {
     @RequestMapping(value = "/deleteCar")
     public String deleteCar(@RequestParam("carId") Integer id, Model model,
              final RedirectAttributes redirectAttributes) {
-        carService.disableCar(new Long(id));
+        carService.disableCar(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("successMessage", "car.cardeleted");
         return "redirect:/";
     }
@@ -85,7 +85,7 @@ public class CarController {
     @RequestMapping(value = "/restoreCar")
     public String restoreCar(@RequestParam("carId") Integer id, Model model,
              final RedirectAttributes redirectAttributes) {
-        carService.restoreCar(new Long(id));
+        carService.restoreCar(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("successMessage", "car.carrestored");
         return "redirect:/";
     }

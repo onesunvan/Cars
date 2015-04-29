@@ -26,6 +26,8 @@ import javax.persistence.Table;
             + "(u.brand LIKE :filter OR u.model LIKE :filter)")
 })
 public class Car implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue
     private Long id;

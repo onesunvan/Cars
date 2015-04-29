@@ -38,7 +38,7 @@ public class OrderController {
     public String bookCar(@RequestParam("carId") Integer id, Principal principal,
             Model model, final RedirectAttributes redirectAttributes) {
         User user = userService.getUserByName(principal.getName());
-        Car car = carService.getCarById(new Long(id));
+        Car car = carService.getCarById(Long.valueOf(id));
         orderService.makeAnOrder(user, car);
         redirectAttributes.addFlashAttribute("successMessage", "ordercar.success");
         return "redirect:/";
@@ -73,7 +73,7 @@ public class OrderController {
     @RequestMapping(value = "/acceptOrder/{id}")
     public String acceptOrder(@PathVariable("id") Integer id,
             Model model, final RedirectAttributes redirectAttributes) {
-        orderService.acceptOrder(new Long(id));
+        orderService.acceptOrder(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("successMessage", "orders.accepted");
         return "redirect:/showOrders";
     }
@@ -81,7 +81,7 @@ public class OrderController {
     @RequestMapping(value = "/declineOrder/{id}")
     public String declineOrder(@PathVariable("id") Integer id,
             Model model, final RedirectAttributes redirectAttributes) {
-        orderService.declineOrder(new Long(id));
+        orderService.declineOrder(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("successMessage", "orders.declined");
         return "redirect:/showOrders";
     }
