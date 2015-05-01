@@ -5,7 +5,9 @@ $(document).ready(function(){
     //Функция отображения PopUp
     function PopUpShow(){
         $("#popup1").show();
-        $("#popup-content-id").load(appUrl + "/userDatas");
+        var url = (appUrl == "/" ? "" : appUrl) + "/userDatas";
+        console.log(url);
+        $("#popup-content-id").load(url);
     }
     //Функция скрытия PopUp
     function PopUpHide(){
