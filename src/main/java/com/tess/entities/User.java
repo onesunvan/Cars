@@ -45,7 +45,7 @@ public class User implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
-    private final Set<UserAuthorization> roles = new HashSet<>();
+    private Set<UserAuthorization> roles = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private UserInformation userInformation;
