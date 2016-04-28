@@ -11,7 +11,7 @@
                  enctype="multipart/form-data">
             <h3><s:message code="label.car"/></h3>
             <sf:errors cssClass="error" path=""/>
-            <table align="center">
+            <table style="margin: 0 auto;">
                 <tr>
                     <td>
                         <label for="brandF"><s:message code="addcontent.brand"/></label>

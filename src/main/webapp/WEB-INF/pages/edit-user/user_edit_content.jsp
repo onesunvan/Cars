@@ -11,7 +11,7 @@
                  enctype="multipart/form-data">
             <h3><s:message code="useredit.title"/></h3>
             <sf:errors cssClass="error" path=""/>
-            <table align="center">
+            <table style="margin: 0 auto;">
                 <tr>
                     <td>
                         <label for="first_name"><s:message code="registration.first_name"/></label>

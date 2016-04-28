@@ -1,12 +1,14 @@
 package com.tess.repositories.jpa;
 
-import com.tess.entities.Car;
-import com.tess.entities.Orders;
-import com.tess.repositories.OrderRepository;
 import java.util.List;
+
 import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.tess.entities.Orders;
+import com.tess.repositories.OrderRepository;
 
 /**
  *

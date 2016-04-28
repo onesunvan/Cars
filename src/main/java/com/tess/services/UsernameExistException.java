@@ -10,5 +10,6 @@ package com.tess.services;
  * @author ivan
  */
 public class UsernameExistException extends Exception {
+	private static final long serialVersionUID = 2299418039958529032L;
     
 }

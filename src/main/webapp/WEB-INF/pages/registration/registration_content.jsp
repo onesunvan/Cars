@@ -12,7 +12,7 @@
                  acceptCharset="UTF-8">
             <h3><s:message code="label.registration"/></h3>
             <sf:errors path="" cssClass="error"/>
-            <table align="center">
+            <table style="margin: 0 auto;">
                 <tr>
                     <td>
                         <label for="name"><s:message code="login.name"/></label>
