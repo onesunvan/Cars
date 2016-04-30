@@ -13,16 +13,16 @@
     
     <http auto-config="true" use-expressions="true">
     	<access-denied-handler error-page="/error/403" />
-        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/editUser" access="ROLE_USER" />
-        <intercept-url pattern="/editPassword" access="ROLE_USER" />
-        <intercept-url pattern="/avatarImg" access="ROLE_USER" />
-        <intercept-url pattern="/addContent" access="ROLE_ADMIN" />
-        <intercept-url pattern="/bookCar" access="ROLE_USER" />
-        <intercept-url pattern="/showOrders" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/showMyOrders" access="ROLE_USER"/>
-        <intercept-url pattern="/acceptOrder**" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/declineOrder**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/editUser" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/editPassword" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/avatarImg" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/addContent" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/bookCar" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/showOrders" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/showMyOrders" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/acceptOrder" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/declineOrder" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/orders/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
         <form-login 
             login-page="/login" 
