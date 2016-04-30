@@ -4,6 +4,7 @@ import com.tess.entities.Role;
 import com.tess.entities.User;
 import com.tess.entities.UserAuthorization;
 import com.tess.entities.UserInformation;
+import com.tess.exceptions.UsernameExistException;
 import com.tess.forms.UserCreditinalsForm;
 import com.tess.forms.UserForm;
 import com.tess.repositories.UserRepository;

@@ -1,6 +1,7 @@
 package com.tess.services;
 
 import com.tess.entities.Car;
+import com.tess.exceptions.CarNotFoundException;
 import com.tess.repositories.CarRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

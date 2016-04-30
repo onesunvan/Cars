@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tess.entities.Car;
-import com.tess.services.CarNotFoundException;
+import com.tess.exceptions.CarNotFoundException;
 import com.tess.services.CarService;
 
 /**

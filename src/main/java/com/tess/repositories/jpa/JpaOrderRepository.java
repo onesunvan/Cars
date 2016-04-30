@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tess.entities.Orders;
+import com.tess.entities.CarOrder;
 import com.tess.repositories.OrderRepository;
 
 /**
@@ -15,11 +15,11 @@ import com.tess.repositories.OrderRepository;
  * @author ivan
  */
 @Repository
-public class JpaOrderRepository extends JpaEntityRepository<Orders>
+public class JpaOrderRepository extends JpaEntityRepository<CarOrder>
         implements OrderRepository {
 
     public JpaOrderRepository() {
-        super(Orders.class);
+        super(CarOrder.class);
     }
 
     @Override
@@ -36,21 +36,21 @@ public class JpaOrderRepository extends JpaEntityRepository<Orders>
     
     @Transactional
     @Override
-    public List<Orders> readLimitOffset(Integer limit, Integer offset) {
+    public List<CarOrder> readLimitOffset(Integer limit, Integer offset) {
         return super.readLimitOffset(limit, offset);
     }
     
     @Transactional
     @Override
-    public Orders read(Long id) {
+    public CarOrder read(Long id) {
         return super.read(id);
     }
 
     @Transactional
     @Override
-    public List<Orders> readLimitOffsetForUser(int limit, int offset, String name) {
-        TypedQuery<Orders> query = em.createNamedQuery("Orders.findForUser", clazz);
-        List<Orders> orders = query.setMaxResults(limit).setFirstResult(offset)
+    public List<CarOrder> readLimitOffsetForUser(int limit, int offset, String name) {
+        TypedQuery<CarOrder> query = em.createNamedQuery("Orders.findForUser", clazz);
+        List<CarOrder> orders = query.setMaxResults(limit).setFirstResult(offset)
                 .setParameter("username", name).getResultList();
         return orders;
     }

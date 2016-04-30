@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.tess.exceptions.UsernameExistException;
 import com.tess.forms.UserForm;
 import com.tess.images.ImageUtil;
 import com.tess.services.UserService;
-import com.tess.services.UsernameExistException;
 
 /**
  *

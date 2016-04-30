@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <div class="container">
     <div class="row">
         <div class="table-responsive">
@@ -11,6 +10,7 @@
                         <th><s:message code="orders.carbrandandmodel"/></th>
                         <th><s:message code="orders.status"/></th>
                         <th><s:message code="orders.message"/></th>
+                        <th><s:message code="orders.action"/></th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -24,6 +24,11 @@
                             </td>
                             <td>
                                 <c:if test="${not empty order.message}">${order.message}</c:if>
+                            </td>
+                            <td>
+                            	<a href="<c:url value="/orders/${order.id}"/>">
+                                    <s:message code="orders.details"/> 
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>

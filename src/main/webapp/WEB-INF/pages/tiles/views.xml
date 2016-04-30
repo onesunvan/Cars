@@ -55,4 +55,8 @@
         <put-attribute name="content"
             value="/WEB-INF/pages/orders/user_orders_content.jsp"/>
     </definition>
+    <definition name="order-detail" extends="welcome">
+        <put-attribute name="content"
+            value="/WEB-INF/pages/orders/order_details_content.jsp"/>
+    </definition>
 </tiles-definitions>

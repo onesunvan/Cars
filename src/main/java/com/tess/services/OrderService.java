@@ -1,13 +1,16 @@
 package com.tess.services;
 
-import com.tess.entities.Car;
-import com.tess.entities.OrderStatus;
-import com.tess.entities.Orders;
-import com.tess.entities.User;
-import com.tess.repositories.OrderRepository;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.tess.entities.Car;
+import com.tess.entities.CarOrder;
+import com.tess.entities.OrderStatus;
+import com.tess.entities.User;
+import com.tess.exceptions.OrderNotFoundException;
+import com.tess.repositories.OrderRepository;
 
 /**
  *
@@ -19,14 +22,14 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Orders makeAnOrder(User user, Car car) {
+    public CarOrder makeAnOrder(User user, Car car) {
         if (user.getId() == null || car.getId() == null) {
             throw new IllegalArgumentException();
         }
         if (!car.getIfExists()) {
             throw new IllegalStateException();
         }
-        Orders order = new Orders();
+        CarOrder order = new CarOrder();
         order.setCar(car);
         order.setUser(user);
         order.setStatus(OrderStatus.NEW);
@@ -34,7 +37,7 @@ public class OrderService {
         return order;
     }
 
-    public List<Orders> getOrdersOnPage(Integer pageNumber) {
+    public List<CarOrder> getOrdersOnPage(Integer pageNumber) {
         return orderRepository.readLimitOffset(9, (pageNumber - 1) * 9);
     }
     
@@ -43,7 +46,7 @@ public class OrderService {
     }
 
     public void acceptOrder(Long id) {
-        Orders order = orderRepository.read(id);
+    	CarOrder order = orderRepository.read(id);
         if (order == null) {
             throw new IllegalArgumentException();
         }
@@ -52,7 +55,7 @@ public class OrderService {
     }
 
     public void declineOrder(Long id) {
-        Orders order = orderRepository.read(id);
+    	CarOrder order = orderRepository.read(id);
         if (order == null) {
             throw new IllegalArgumentException();
         }
@@ -60,11 +63,29 @@ public class OrderService {
         orderRepository.update(order);
     }
 
-    public List<Orders> getUserOrdersOnPage(Integer pageNumber, String name) {
+    public List<CarOrder> getUserOrdersOnPage(Integer pageNumber, String name) {
         return orderRepository.readLimitOffsetForUser(9, (pageNumber - 1) * 9, name);
     }
 
     public Long getAmountOfUserOrders(String username) {
         return orderRepository.getAmountOfUserOrders(username);
+    }
+    
+    public CarOrder getUserOrder(Long id, String username) {
+    	CarOrder order = orderRepository.read(id);
+    	if (order == null || order.getUser().getUsername().equals(username)) {
+    		throw new OrderNotFoundException();
+    	} else {
+    		return order;
+    	}
+    }
+    
+    public CarOrder getOrder(Long id) {
+    	CarOrder order = orderRepository.read(id);
+    	if (order == null) {
+    		throw new OrderNotFoundException();
+    	} else {
+    		return order;
+    	}
     }
 }

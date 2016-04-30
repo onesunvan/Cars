@@ -62,7 +62,7 @@
     </bean>
     
     <bean
-	class="com.tess.exceptions.CustomExceptionResolver">
+	class="com.tess.exceptions.resolvers.CustomExceptionResolver">
         <property name="defaultErrorView" value="errorpage"/>
     </bean>
     
