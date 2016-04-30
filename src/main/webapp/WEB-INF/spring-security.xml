@@ -11,6 +11,7 @@
                 class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
     
     <http auto-config="true">
+    	<access-denied-handler error-page="/error/403" />
         <intercept-url pattern="/admin**" access="ROLE_ADMIN" />
         <intercept-url pattern="/editUser" access="ROLE_USER" />
         <intercept-url pattern="/editPassword" access="ROLE_USER" />

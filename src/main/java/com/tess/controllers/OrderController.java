@@ -67,7 +67,7 @@ public class OrderController {
         model.addAttribute("orders", orders);
         model.addAttribute("amount", orderService.getAmountOfUserOrders(principal.getName()));
         model.addAttribute("pageNumber", pageNumber);
-        return "orders";        
+        return "my-orders";        
     }
     
     @RequestMapping(value = "/acceptOrder/{id}")

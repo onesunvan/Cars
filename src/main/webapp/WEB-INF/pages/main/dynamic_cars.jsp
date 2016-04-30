@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:if test="${not cars.size() lt 1}">
+<c:if test="${cars.size() gt 0}">
     <c:forEach var="i" begin="0" end="${cars.size() - 1}" step="3">
         <div class='row-fluid'>
             <c:if test="${i lt cars.size()}">

@@ -49,6 +49,10 @@
     </definition>
     <definition name="orders" extends="welcome">
         <put-attribute name="content"
-            value="/WEB-INF/pages/orders/orders_content.jsp"/>
+            value="/WEB-INF/pages/orders/admin_orders_content.jsp"/>
+    </definition>
+    <definition name="my-orders" extends="welcome">
+        <put-attribute name="content"
+            value="/WEB-INF/pages/orders/user_orders_content.jsp"/>
     </definition>
 </tiles-definitions>
