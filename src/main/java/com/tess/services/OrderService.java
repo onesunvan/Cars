@@ -2,6 +2,8 @@ package com.tess.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,10 +75,10 @@ public class OrderService {
     
     public CarOrder getUserOrder(Long id, String username) {
     	CarOrder order = orderRepository.read(id);
-    	if (order == null || order.getUser().getUsername().equals(username)) {
-    		throw new OrderNotFoundException();
-    	} else {
+    	if (order != null && order.getUser().getUsername().equals(username)) {
     		return order;
+    	} else {
+    		throw new OrderNotFoundException();
     	}
     }
     

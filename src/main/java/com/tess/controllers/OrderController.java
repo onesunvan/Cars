@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,11 +38,11 @@ public class OrderController {
 	@Autowired
 	private CarService carService;
 
-	@RequestMapping(value = "/bookCar")
-	public String bookCar(@RequestParam("carId") Integer id, Principal principal, Model model,
+	@RequestMapping(value = "/orders", method = RequestMethod.POST)
+	public String postOrder(@RequestParam("carId") Integer carId, Principal principal, Model model,
 			final RedirectAttributes redirectAttributes) {
 		User user = userService.getUserByName(principal.getName());
-		Car car = carService.getCarById(Long.valueOf(id));
+		Car car = carService.getCarById(Long.valueOf(carId));
 		orderService.makeAnOrder(user, car);
 		redirectAttributes.addFlashAttribute("successMessage", "ordercar.success");
 		return "redirect:/";

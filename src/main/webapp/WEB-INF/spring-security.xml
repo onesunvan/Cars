@@ -23,6 +23,8 @@
         <intercept-url pattern="/showMyOrders" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/acceptOrder" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/declineOrder" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/orders/decline/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/orders/accept/*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/orders/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
         <form-login 
             login-page="/login" 

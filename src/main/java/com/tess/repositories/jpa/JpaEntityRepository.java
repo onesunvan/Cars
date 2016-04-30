@@ -1,11 +1,14 @@
 package com.tess.repositories.jpa;
 
-import com.tess.repositories.Repository;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.springframework.transaction.annotation.Transactional;
+
+import com.tess.repositories.Repository;
 /**
  *
  * @author ivan
