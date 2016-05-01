@@ -25,8 +25,8 @@
 			<c:choose>
 				<c:when test="${order.status == 'NEW'}">
 					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> <input
-							type="hidden" name="action" value="accept" />
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="accept" />
 						<button type="submit" class="btn-link">
 							<s:message code="orders.accept" />
 						</button>

@@ -18,11 +18,6 @@
         <intercept-url pattern="/editPassword" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/avatarImg" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/addContent" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/bookCar" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/showOrders" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/showMyOrders" access="hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/acceptOrder" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/declineOrder" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/orders/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
         <form-login 
             login-page="/login" 

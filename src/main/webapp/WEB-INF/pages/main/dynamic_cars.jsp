@@ -7,9 +7,9 @@
             <c:if test="${i lt cars.size()}">
                 <div class='span4 row-fluid'>
                     <div class='candy-div span10 offset2'>
-                        <a href="<c:url value="/car/${cars[i].id}"/>">
+                        <a href="<c:url value="/cars/${cars[i].id}"/>">
                             <button>
-                                <img src="<c:url value="/carImg/${cars[i].id}"/>" class="img-rounded myimg"/>
+                                <img src="<c:url value="/cars/${cars[i].id}/img"/>" class="img-rounded myimg"/>
                                 <p class='CandyName'>${cars[i].brand}</p>
                                 <p class='CandyName'>${cars[i].model}</p>
                                 <p class='CandyName'>${cars[i].price} $</p>
@@ -21,9 +21,9 @@
             <c:if test="${(i + 1) lt cars.size()}">
                 <div class='span4 row-fluid'>
                     <div class='candy-div span10 offset1' >
-                        <a href="<c:url value="/car/${cars[i + 1].id}"/>">
+                        <a href="<c:url value="/cars/${cars[i + 1].id}"/>">
                             <button>
-                                <img src="<c:url value="/carImg/${cars[i + 1].id}"/>" class="img-rounded myimg"/>
+                                <img src="<c:url value="/cars/${cars[i + 1].id}/img"/>" class="img-rounded myimg"/>
                                 <p class='CandyName'>${cars[i + 1].brand}</p>
                                 <p class='CandyName'>${cars[i + 1].model}</p>
                                 <p class='CandyName'>${cars[i + 1].price} $</p>
@@ -35,9 +35,9 @@
             <c:if test="${(i + 2) lt cars.size()}">
                 <div class='span4 row-fluid'>
                     <div class='candy-div span10' >
-                        <a href="<c:url value="/car/${cars[i + 2].id}"/>">
+                        <a href="<c:url value="/cars/${cars[i + 2].id}"/>">
                             <button>
-                                <img src="<c:url value="/carImg/${cars[i + 2].id}"/>" class="img-rounded myimg"/>
+                                <img src="<c:url value="/cars/${cars[i + 2].id}/img"/>" class="img-rounded myimg"/>
                                 <p class='CandyName'>${cars[i + 2].brand}</p>
                                 <p class='CandyName'>${cars[i + 2].model}</p>
                                 <p class='CandyName'>${cars[i + 2].price} $</p>

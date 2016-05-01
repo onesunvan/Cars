@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">
 <div class="row-fluid span6 offset3" >
     <div class='row-fluid span6 offset3 login'>
-        <img src="<c:url value="/carImg/${car.id}"/>" class="img-rounded myimg"/>
+        <img src="<c:url value="/cars/${car.id}/img"/>" class="img-rounded myimg"/>
         <p class='CandyName'>${car.brand}</p>
         <p class='CandyName'>${car.model}</p>
         <p class='CandyName'>${car.price} $</p>
@@ -24,14 +24,22 @@
         <c:if test="${isAdmin}">
             <c:choose>
                 <c:when test="${car.ifExists}">
-                    <a href="<c:url value="/deleteCar?carId=${car.id}"/>">
-                        <s:message code="car.deletecar"/>
-                    </a>
+                	<form action="<c:url value="/cars/${car.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="disable" />
+						<button type="submit" class="btn-link">
+							<s:message code="car.deletecar" />
+						</button>
+					</form>
                 </c:when>
                 <c:otherwise>
-                    <a href="<c:url value="/restoreCar?carId=${car.id}"/>">
-                        <s:message code="car.restorecar"/>
-                    </a>
+                	<form action="<c:url value="/cars/${car.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="restore" />
+						<button type="submit" class="btn-link">
+							<s:message code="car.restorecar" />
+						</button>
+					</form>
                 </c:otherwise>
             </c:choose>
         </c:if>
