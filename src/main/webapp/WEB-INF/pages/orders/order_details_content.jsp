@@ -12,90 +12,130 @@
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/login.css"/>">
-<div class="row-fluid span6 offset3">
-	<div class='row-fluid span6 offset3 login'>
-		<p class='CandyName'>
-			<s:message code="orders.details" />
-		</p>
-		<%-- <img src="<c:url value="/carImg/${car.id}"/>" class="img-rounded myimg"/> --%>
-		<p class='CandyName'>${car.brand}${car.model}-${car.price} $</p>
-		<p class='CandyName'>${order.user.username}</p>
-		<p class='CandyName'>${order.status}</p>
-		<c:if test="${isAdmin}">
-			<c:choose>
-				<c:when test="${order.status == 'NEW'}">
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="accept" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.accept" />
-						</button>
-					</form>
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="decline" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.decline" />
-						</button>
-					</form>
-				</c:when>
-				<c:when test="${order.status == 'RETURNED'}">
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="fine" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.fine" />
-						</button>
-					</form>
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="close" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.close" />
-						</button>
-					</form>
-				</c:when>
-				<c:otherwise>
-					<s:message code="orders.details.waitingforuser" />
-				</c:otherwise>
-			</c:choose>
-		</c:if>
-		<c:if test="${isUser }">
-			<c:choose>
-				<c:when test="${order.status == 'ACCEPTED'}">
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="pay" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.pay" />
-						</button>
-					</form>
-				</c:when>
-				<c:when test="${order.status == 'DECLINED'}">
-					<s:message code="orders.declined" />
-				</c:when>
-				<c:when test="${order.status == 'IN_USE'}">
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="return" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.returncar" />
-						</button>
-					</form>
-				</c:when>
-				<c:when test="${order.status == 'FINED'}">
-					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> 
-						<input type="hidden" name="action" value="pay-fine" />
-						<button type="submit" class="btn-link">
-							<s:message code="orders.pay" />
-						</button>
-					</form>
-				</c:when>
-				<c:otherwise>
-					<s:message code="orders.details.waitingformanager" />
-				</c:otherwise>
-			</c:choose>
-		</c:if>
-	</div>
+<div class="container">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-hover">
+            	<tbody id="myTable">
+            		<tr>
+            			<td><p class='CandyName'><s:message code="orders.details"/><p/></td>
+            			<td>
+            				<p class='CandyName'><s:message code="${order.status}"/></p>
+            			</td>
+            			<td>
+							<c:if test="${isAdmin}">
+								<c:choose>
+									<c:when test="${order.status == 'NEW'}">
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="accept" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.accept" />
+											</button>
+										</form>
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="decline" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.decline" />
+											</button>
+										</form>
+									</c:when>
+									<c:when test="${order.status == 'DECLINED'}">
+										<p class='CandyName'><s:message code="orders.declined" /></p>
+									</c:when>
+									<c:when test="${order.status == 'RETURNED'}">
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="fine" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.fine" />
+											</button>
+										</form>
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="close" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.close" />
+											</button>
+										</form>
+									</c:when>
+									<c:when test="${order.status == 'CLOSED'}">
+										<p class='CandyName'><s:message code="orders.closed" /></p>
+									</c:when>
+									<c:otherwise>
+										<p class='CandyName'><s:message code="orders.details.waitingforuser" /></p>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
+							<c:if test="${isUser }">
+								<c:choose>
+									<c:when test="${order.status == 'ACCEPTED'}">
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="pay" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.pay" />
+											</button>
+										</form>
+									</c:when>
+									<c:when test="${order.status == 'DECLINED'}">
+										<p class='CandyName'><s:message code="orders.declined" /></p>
+									</c:when>
+									<c:when test="${order.status == 'IN_USE'}">
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="return" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.returncar" />
+											</button>
+										</form>
+									</c:when>
+									<c:when test="${order.status == 'FINED'}">
+										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="_method" value="put" /> 
+											<input type="hidden" name="action" value="pay-fine" />
+											<button type="submit" class="btn btn-primary ss">
+												<s:message code="orders.pay" />
+											</button>
+										</form>
+									</c:when>
+									<c:when test="${order.status == 'CLOSED'}">
+										<p class='CandyName'><s:message code="orders.closed" /></p>
+									</c:when>
+									<c:otherwise>
+										<p class='CandyName'><s:message code="orders.details.waitingformanager" /></p>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
+            			</td>
+            		</tr>
+            		<tr>
+            			<td>
+            				<img src="<c:url value="/cars/${car.id}/img"/>" class="img-rounded myimg"/>
+            			</td>
+            			<td>
+            				<p class='CandyName'>${car.brand} ${car.model}</p>
+            			</td>
+            			<td>
+            				<p class='CandyName'>${car.price} $ <s:message code="orders.perweek"/></p>
+            			</td>
+            		</tr>
+            		<c:if test="${isAdmin}">
+	            		<tr>
+	            			<td>
+	            				<img src="<c:url value="/users/${order.user.username}/img"/>" class="img-rounded myimg"/>
+	            			</td>
+	            			<td>
+	            				<p class='CandyName'>${order.user.username}</p>
+	            			</td>
+	            			<td>
+	            				<p class='CandyName'>${order.user.userInformation.firstName} ${order.user.userInformation.lastName}</p>
+	            			</td>
+	            		</tr>
+            		</c:if>
+            	</tbody>
+            </table>
+        </div>
+    </div>
 </div>

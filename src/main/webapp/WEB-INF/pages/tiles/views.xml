@@ -17,10 +17,6 @@
         <put-attribute name="login"
             value="/WEB-INF/pages/login/login_menu.jsp"/>
     </definition>
-    <definition name="admin" extends="login">
-        <put-attribute name="content"
-            value="/WEB-INF/pages/admin/admin_content.jsp"/>
-    </definition>
     <definition name="registration" extends="login">
         <put-attribute name="content"
             value="/WEB-INF/pages/registration/registration_content.jsp"/>
