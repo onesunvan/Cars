@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/showMyOrders"/>">
+            <a href="<c:url value="/orders"/>">
                 <s:message code="login.showmyorders"/>
             </a>
         </li>
@@ -44,7 +44,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/showOrders?pageNumber=1"/>">
+            <a href="<c:url value="/orders?pageNumber=1"/>">
                 <s:message code="login.showorders"/>
             </a>
         </li>

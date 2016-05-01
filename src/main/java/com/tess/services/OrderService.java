@@ -2,8 +2,6 @@ package com.tess.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,18 +48,26 @@ public class OrderService {
     public void acceptOrder(Long id) {
     	CarOrder order = orderRepository.read(id);
         if (order == null) {
-            throw new IllegalArgumentException();
+            throw new OrderNotFoundException();
         }
-        order.setStatus(OrderStatus.ACCEPTED);
+        if (order.getStatus() == OrderStatus.NEW) {
+        	order.setStatus(OrderStatus.ACCEPTED);
+        } else {
+        	throw new IllegalStateException();
+        }
         orderRepository.update(order);
     }
 
     public void declineOrder(Long id) {
     	CarOrder order = orderRepository.read(id);
         if (order == null) {
-            throw new IllegalArgumentException();
+            throw new OrderNotFoundException();
         }
-        order.setStatus(OrderStatus.DECLINED);
+        if (order.getStatus() == OrderStatus.NEW) {
+        	order.setStatus(OrderStatus.DECLINED);
+        } else {
+        	throw new IllegalStateException();
+        }
         orderRepository.update(order);
     }
 

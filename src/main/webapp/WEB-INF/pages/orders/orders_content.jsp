@@ -10,12 +10,11 @@
                         <th><s:message code="orders.carbrandandmodel"/></th>
                         <th><s:message code="orders.status"/></th>
                         <th><s:message code="orders.message"/></th>
-                        <th><s:message code="orders.action"/></th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
                     <c:forEach items="${orders}" var="order">
-                        <tr>
+                        <tr style="cursor: pointer" onclick="location.href='<c:url value="/orders/${order.id}"/>';">
                             <td>
                                 ${order.car.brand} ${order.car.model}
                             </td>
@@ -24,11 +23,6 @@
                             </td>
                             <td>
                                 <c:if test="${not empty order.message}">${order.message}</c:if>
-                            </td>
-                            <td>
-                            	<a href="<c:url value="/orders/${order.id}"/>">
-                                    <s:message code="orders.details"/> 
-                                </a>
                             </td>
                         </tr>
                     </c:forEach>

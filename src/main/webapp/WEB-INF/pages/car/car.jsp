@@ -16,9 +16,6 @@
         <p class='CandyName'>${car.model}</p>
         <p class='CandyName'>${car.price} $</p>
         <c:if test="${not isAdmin}">
-            <%-- <a href="<c:url value="/bookCar?carId=${car.id}"/>">
-                <s:message code="car.ordercar"/>
-            </a> --%>
             <form action="<c:url value="/orders"/>" method="POST">
             	<input type="hidden" name="carId" value="${car.id}"/>
             	<button type="submit" class="btn-link"><s:message code="car.ordercar"/></button>
