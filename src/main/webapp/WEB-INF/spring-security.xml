@@ -17,6 +17,7 @@
         <intercept-url pattern="/editPassword" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/avatarImg" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/addContent" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/orders" method="POST" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/orders/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
         <intercept-url pattern="/users/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
         <form-login 
