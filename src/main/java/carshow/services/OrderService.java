@@ -70,7 +70,72 @@ public class OrderService {
         }
         orderRepository.update(order);
     }
+    
+    public void payOrder(Long id) {
+    	CarOrder order = orderRepository.read(id);
+        if (order == null) {
+            throw new OrderNotFoundException();
+        }
+        if (order.getStatus() == OrderStatus.ACCEPTED) {
+        	order.setStatus(OrderStatus.IN_USE);
+        } else {
+        	throw new IllegalStateException();
+        }
+        orderRepository.update(order);
+    }
+    
+    public void returnCar(Long id) {
+    	CarOrder order = orderRepository.read(id);
+        if (order == null) {
+            throw new OrderNotFoundException();
+        }
+        if (order.getStatus() == OrderStatus.IN_USE) {
+        	order.setStatus(OrderStatus.RETURNED);
+        } else {
+        	throw new IllegalStateException();
+        }
+        orderRepository.update(order);
+    }
 
+    public void fineOrder(Long id) {
+    	CarOrder order = orderRepository.read(id);
+        if (order == null) {
+            throw new OrderNotFoundException();
+        }
+        if (order.getStatus() == OrderStatus.RETURNED) {
+        	order.setStatus(OrderStatus.FINED);
+        } else {
+        	throw new IllegalStateException();
+        }
+        orderRepository.update(order);
+    }
+    
+    public void closeOrder(Long id) {
+    	CarOrder order = orderRepository.read(id);
+        if (order == null) {
+            throw new OrderNotFoundException();
+        }
+        if (order.getStatus() == OrderStatus.RETURNED) {
+        	order.setStatus(OrderStatus.CLOSED);
+        } else {
+        	throw new IllegalStateException();
+        }
+        orderRepository.update(order);
+    }
+    
+    public void payFinedOrder(Long id) {
+    	CarOrder order = orderRepository.read(id);
+        if (order == null) {
+            throw new OrderNotFoundException();
+        }
+        if (order.getStatus() == OrderStatus.FINED) {
+        	order.setStatus(OrderStatus.CLOSED);
+        } else {
+        	throw new IllegalStateException();
+        }
+        orderRepository.update(order);
+    }
+    
     public List<CarOrder> getUserOrdersOnPage(Integer pageNumber, String name) {
         return orderRepository.readLimitOffsetForUser(9, (pageNumber - 1) * 9, name);
     }

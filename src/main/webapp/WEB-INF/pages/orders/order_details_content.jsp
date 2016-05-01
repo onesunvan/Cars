@@ -32,14 +32,28 @@
 						</button>
 					</form>
 					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
-						<input type="hidden" name="_method" value="put" /> <input
-							type="hidden" name="action" value="decline" />
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="decline" />
 						<button type="submit" class="btn-link">
 							<s:message code="orders.decline" />
 						</button>
 					</form>
 				</c:when>
-				<c:when test="${order.status == 'NEW'}">
+				<c:when test="${order.status == 'RETURNED'}">
+					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="fine" />
+						<button type="submit" class="btn-link">
+							<s:message code="orders.fine" />
+						</button>
+					</form>
+					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="close" />
+						<button type="submit" class="btn-link">
+							<s:message code="orders.close" />
+						</button>
+					</form>
 				</c:when>
 				<c:otherwise>
 					<s:message code="orders.details.waitingforuser" />
@@ -48,11 +62,35 @@
 		</c:if>
 		<c:if test="${isUser }">
 			<c:choose>
-				<c:when test="${order.status == 'NEW'}">
-
+				<c:when test="${order.status == 'ACCEPTED'}">
+					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="pay" />
+						<button type="submit" class="btn-link">
+							<s:message code="orders.pay" />
+						</button>
+					</form>
 				</c:when>
-				<c:when test="${order.status == 'NEW'}">
-
+				<c:when test="${order.status == 'DECLINED'}">
+					<s:message code="orders.declined" />
+				</c:when>
+				<c:when test="${order.status == 'IN_USE'}">
+					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="return" />
+						<button type="submit" class="btn-link">
+							<s:message code="orders.returncar" />
+						</button>
+					</form>
+				</c:when>
+				<c:when test="${order.status == 'FINED'}">
+					<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+						<input type="hidden" name="_method" value="put" /> 
+						<input type="hidden" name="action" value="pay-fine" />
+						<button type="submit" class="btn-link">
+							<s:message code="orders.pay" />
+						</button>
+					</form>
 				</c:when>
 				<c:otherwise>
 					<s:message code="orders.details.waitingformanager" />

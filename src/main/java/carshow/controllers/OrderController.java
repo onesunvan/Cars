@@ -84,11 +84,34 @@ public class OrderController {
 					orderService.declineOrder(Long.valueOf(id));
 					redirectAttributes.addFlashAttribute("successMessage", "orders.declined");
 					break;
+				case "fine":
+					orderService.fineOrder(Long.valueOf(id));
+					redirectAttributes.addFlashAttribute("successMessage", "orders.fined");
+					break;
+				case "close":
+					orderService.closeOrder(Long.valueOf(id));
+					redirectAttributes.addFlashAttribute("successMessage", "orders.closed");
+					break;
 				default:
 					return "redirect:/403";
 				}
 			} else if (request.isUserInRole("ROLE_USER")) {
-				
+				switch (action) {
+				case "pay":
+					orderService.payOrder(Long.valueOf(id));
+					redirectAttributes.addFlashAttribute("successMessage", "orders.paid");
+					break;
+				case "return":
+					orderService.returnCar(Long.valueOf(id));
+					redirectAttributes.addFlashAttribute("successMessage", "orders.returned");
+					break;
+				case "pay-fine":
+					orderService.payFinedOrder(Long.valueOf(id));
+					redirectAttributes.addFlashAttribute("successMessage", "orders.closed");
+					break;
+				default:
+					return "redirect:/403";
+				}
 			}
 			return "redirect:/orders";
 		} catch (IllegalStateException ex) {
