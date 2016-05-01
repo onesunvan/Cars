@@ -3,7 +3,7 @@
   <display-name>Cars</display-name>
   <filter>
     <filter-name>FormEncodingSetterFilter</filter-name>
-    <filter-class>com.tess.filters.FormEncodingSetterFilter</filter-class>
+    <filter-class>carshow.filters.FormEncodingSetterFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
