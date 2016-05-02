@@ -43,10 +43,13 @@ public class CarController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getCars(@RequestParam(value = "number") Integer number,
+	public String getCars(@RequestParam(value = "number", required = false) Integer number,
 			@RequestParam(value = "filter", required = false) String filter, Model model,
 			SecurityContextHolderAwareRequestWrapper request) {
 		List<Car> cars;
+		if (number == null) {
+			number = 1;
+		}
 		if (filter != null) {
 			if (request.isUserInRole("ROLE_ADMIN")) {
 				cars = carService.getCarsOnPageLike(number, filter);

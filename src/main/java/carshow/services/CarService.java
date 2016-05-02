@@ -28,19 +28,19 @@ public class CarService {
     }
 
     public List<Car> getCarsOnPageIfExists(Integer number) {
-        return carRepository.readLimitOffsetIfExists(9, number * 9);
+        return carRepository.readLimitOffsetIfExists(9, (number - 1) * 9);
     }
 
     public List<Car> getCarsOnPage(Integer number) {
-        return carRepository.readLimitOffset(9, number * 9);
+        return carRepository.readLimitOffset(9, (number - 1) * 9);
     }
 
     public List<Car> getCarsOnPageLikeIfExists(Integer number, String filter) {
-        return carRepository.readLimitOffsetLikeIfExists(9, number * 9, filter);
+        return carRepository.readLimitOffsetLikeIfExists(9, (number - 1) * 9, filter);
     }
 
     public List<Car> getCarsOnPageLike(Integer number, String filter) {
-        return carRepository.readLimitOffsetLike(9, number * 9, filter);
+        return carRepository.readLimitOffsetLike(9, (number - 1) * 9, filter);
     }
 
     public Car getCarById(Long id) {
