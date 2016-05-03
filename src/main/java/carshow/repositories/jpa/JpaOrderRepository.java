@@ -2,6 +2,7 @@ package carshow.repositories.jpa;
 
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -61,5 +62,11 @@ public class JpaOrderRepository extends JpaEntityRepository<CarOrder>
         Long result =  q.setParameter("username", username).getSingleResult();
         return result;
     }
+
+	@Override
+	public void declineNewOrdersForCar(Long id) {
+		Query ordersQuery = em.createNamedQuery("Orders.declineNewOrdersWithCarId");
+		ordersQuery.setParameter("carId", id).executeUpdate();
+	}
 
 }

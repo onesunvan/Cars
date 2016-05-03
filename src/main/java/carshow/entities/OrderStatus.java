@@ -10,5 +10,5 @@ package carshow.entities;
  * @author ivan
  */
 public enum OrderStatus {
-    NEW, ACCEPTED, DECLINED, DELETED, IN_USE, RETURNED, FINED, CLOSED
+    NEW_ORDER, ACCEPTED, DECLINED, DELETED, IN_USE, RETURNED, FINED, CLOSED
 }

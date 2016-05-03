@@ -23,7 +23,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Order.findAll", query = "SELECT o FROM CarOrder o"),
     @NamedQuery(name = "Order.amount", query = "SELECT count(o) FROM CarOrder o"),
     @NamedQuery(name = "Order.userAmount", query = "SELECT count(o) FROM CarOrder o WHERE o.user.username=:username"),
-    @NamedQuery(name = "Orders.findForUser", query = "SELECT o FROM CarOrder o WHERE o.user.username=:username")
+    @NamedQuery(name = "Orders.findForUser", query = "SELECT o FROM CarOrder o WHERE o.user.username=:username"),
+    @NamedQuery(name = "Orders.declineNewOrdersWithCarId", 
+    				query = "UPDATE CarOrder o SET o.status=carshow.entities.OrderStatus.DECLINED WHERE o.car.id=:carId AND o.status=carshow.entities.OrderStatus.NEW_ORDER")
 })
 public class CarOrder implements Serializable {
     private static final long serialVersionUID = 1L;

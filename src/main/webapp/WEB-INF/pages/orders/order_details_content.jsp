@@ -25,7 +25,7 @@
             			<td>
 							<c:if test="${isAdmin}">
 								<c:choose>
-									<c:when test="${order.status == 'NEW'}">
+									<c:when test="${order.status == 'NEW_ORDER'}">
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="accept" />

@@ -2,6 +2,8 @@ package carshow.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +34,7 @@ public class OrderService {
         CarOrder order = new CarOrder();
         order.setCar(car);
         order.setUser(user);
-        order.setStatus(OrderStatus.NEW);
+        order.setStatus(OrderStatus.NEW_ORDER);
         orderRepository.save(order);
         return order;
     }
@@ -45,13 +47,15 @@ public class OrderService {
         return orderRepository.getCount();
     }
 
+    @Transactional
     public void acceptOrder(Long id) {
     	CarOrder order = orderRepository.read(id);
         if (order == null) {
             throw new OrderNotFoundException();
         }
-        if (order.getStatus() == OrderStatus.NEW) {
+        if (order.getStatus() == OrderStatus.NEW_ORDER) {
         	order.setStatus(OrderStatus.ACCEPTED);
+        	orderRepository.declineNewOrdersForCar(order.getCar().getId());
         } else {
         	throw new IllegalStateException();
         }
@@ -63,7 +67,7 @@ public class OrderService {
         if (order == null) {
             throw new OrderNotFoundException();
         }
-        if (order.getStatus() == OrderStatus.NEW) {
+        if (order.getStatus() == OrderStatus.NEW_ORDER) {
         	order.setStatus(OrderStatus.DECLINED);
         } else {
         	throw new IllegalStateException();
