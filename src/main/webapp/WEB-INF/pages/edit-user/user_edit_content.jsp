@@ -59,17 +59,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="passportF"><s:message code="registration.passport"/></label>
+                        <label for="phoneNumberF"><s:message code="registration.phonenumber"/></label>
                     </td>
                     <td>
-                        <c:set var="loginNameText"><s:message code="registration.passport"/></c:set>
-                        <sf:input path="passport"
-                                  class="form-control" id="passportF" placeholder="${loginNameText}"/>
+                        <c:set var="loginNameText"><s:message code="registration.phonenumber"/></c:set>
+                        <sf:input path="phoneNumber"
+                                  class="form-control" id="phoneNumberF" placeholder="${loginNameText}"/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors cssClass="error" path="passport"/>
+                        <sf:errors cssClass="error" path="phoneNumber"/>
                     </td>
                 </tr>
                 <tr>

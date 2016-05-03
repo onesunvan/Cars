@@ -25,7 +25,8 @@ public class UserInformation implements Serializable {
 
     private String email;
 
-    private String passport;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
     @OneToOne
     @JoinColumn(name = "USER_ID")
@@ -44,10 +45,10 @@ public class UserInformation implements Serializable {
     public UserInformation() {
     }
 
-    public UserInformation(String email, String passport, User user, String firstName, 
+    public UserInformation(String email, String phoneNumber, User user, String firstName, 
             String lastName, byte[] image) {
         this.email = email;
-        this.passport = passport;
+        this.phoneNumber = phoneNumber;
         this.user = user;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -60,14 +61,6 @@ public class UserInformation implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
     }
 
     public Long getId() {
@@ -109,5 +102,13 @@ public class UserInformation implements Serializable {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 }

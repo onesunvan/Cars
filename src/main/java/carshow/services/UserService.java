@@ -37,7 +37,7 @@ public class UserService {
         user.getRoles().add(new UserAuthorization(Role.ROLE_USER));
         user.setUserInformation(
                 new UserInformation(userForm.getEmail(), 
-                    userForm.getPassport(), user, userForm.getFirstName(), 
+                    userForm.getPhoneNumber(), user, userForm.getFirstName(), 
                     userForm.getLastName(), image));
         userRepository.save(user);
     }
@@ -45,7 +45,7 @@ public class UserService {
     public void updateUserByUserCreditinalsForm(String username, UserCreditinalsForm userForm, byte[] image) {
         User user = userRepository.getUserByName(username);
         user.getUserInformation().setEmail(userForm.getEmail());
-        user.getUserInformation().setPassport(userForm.getPassport());
+        user.getUserInformation().setPhoneNumber(userForm.getPhoneNumber());
         user.getUserInformation().setFirstName(userForm.getFirstName());
         user.getUserInformation().setLastName(userForm.getLastName());
         if (image != null) {

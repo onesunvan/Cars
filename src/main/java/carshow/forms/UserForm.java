@@ -39,8 +39,8 @@ public class UserForm {
     private String email;
     
     @NotEmpty
-    @Size(min = 8, max = 8)
-    private String passport;
+    @Size(min = 10, max = 12)
+    private String phoneNumber;
     
     @Override
     public String toString() {
@@ -79,14 +79,6 @@ public class UserForm {
         this.email = email;
     }
 
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -102,4 +94,12 @@ public class UserForm {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 }

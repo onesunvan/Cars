@@ -9,13 +9,13 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private String passport;
+    private String phoneNumber;
 
-    public UserDTO(String firstName, String lastName, String email, String passport) {
+    public UserDTO(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.passport = passport;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {
@@ -42,11 +42,11 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getPassport() {
-        return passport;
-    }
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 }

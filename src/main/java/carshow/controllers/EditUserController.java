@@ -42,7 +42,7 @@ public class EditUserController {
         String name = auth.getName(); //get logged in username
         User userEntity = userService.getUserByName(name);
         user.setEmail(userEntity.getUserInformation().getEmail());
-        user.setPassport(userEntity.getUserInformation().getPassport());
+        user.setPhoneNumber(userEntity.getUserInformation().getPhoneNumber());
         user.setFirstName(userEntity.getUserInformation().getFirstName());
         user.setLastName(userEntity.getUserInformation().getLastName());
         return "user_edit";

@@ -38,7 +38,7 @@ public class UserController {
         }
         UserInformation user = userService.getUserByName(username)
                 .getUserInformation();
-        UserDTO userDTO = new UserDTO(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassport());
+        UserDTO userDTO = new UserDTO(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber());
         model.addAttribute("userDTO", userDTO);
         return "user-datas";
     }
