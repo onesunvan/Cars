@@ -27,11 +27,11 @@ public class UserForm {
     private String username;
 
     @NotEmpty
-    @Size(min = 6, max = 25)
+    @Size(min = 6, max = 100)
     private String password;
 
     @NotEmpty
-    @Size(min = 6, max = 25)
+    @Size(min = 6, max = 100)
     private String confirmPassword;
 
     @NotEmpty

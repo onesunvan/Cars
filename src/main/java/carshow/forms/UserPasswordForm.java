@@ -10,15 +10,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class UserPasswordForm {
 
     @NotEmpty
-    @Size(min = 6, max = 25)
+    @Size(min = 6, max = 100)
     private String oldPassword;
 
     @NotEmpty
-    @Size(min = 6, max = 25)
+    @Size(min = 6, max = 100)
     private String password;
 
     @NotEmpty
-    @Size(min = 6, max = 25)
+    @Size(min = 6, max = 100)
     private String confirmPassword;
 
     public UserPasswordForm() {
