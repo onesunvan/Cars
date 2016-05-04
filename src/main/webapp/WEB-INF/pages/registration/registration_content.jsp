@@ -120,7 +120,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <s:message code="addcontent.image"/>
+                        <s:message code="user.image"/>
                     </td>
                     <td>
                         <input type="file" name="uploadFile" class=" btn-mini"/>
