@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,6 +40,9 @@ public class RegistrationController {
 
     @Autowired
     private UserService userService;
+    
+    @Resource(name = "org.springframework.security.authenticationManager")
+    protected AuthenticationManager authenticationManager;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationPage(@ModelAttribute("user") UserForm user) {
@@ -44,7 +52,7 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String register(@ModelAttribute("user") @Valid UserForm user, 
             BindingResult bindingResult, @RequestParam(value = "uploadFile") MultipartFile image,
-            Model model, final RedirectAttributes redirectAttributes) {
+            Model model, final RedirectAttributes redirectAttributes, HttpServletRequest request) {
         List<String> imageErrors = new LinkedList<>();
         byte[] imageBytes = ImageUtil.validateImage(image, imageErrors);
         if (!imageErrors.isEmpty()) {
@@ -64,8 +72,23 @@ public class RegistrationController {
                 return "registration";
             }
             redirectAttributes.addFlashAttribute("successMessage", "registration.success");
+            authenticateUserAndSetSession(user, request);
             return "redirect:/";
         }
+    }
+    
+    private void authenticateUserAndSetSession(UserForm user, HttpServletRequest request) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+
+        // generate session if one doesn't exist
+        request.getSession();
+
+        token.setDetails(new WebAuthenticationDetails(request));
+        Authentication authenticatedUser = authenticationManager.authenticate(token);
+
+        SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
     }
     
     @RequestMapping(value = "/avatarImg", method = RequestMethod.GET)
