@@ -5,6 +5,7 @@
 <tiles-definitions>
 	<definition name="template" template="/WEB-INF/pages/common/template.jsp">
 		<put-attribute name="title" value="carshow.title"/>
+		<put-attribute name="description" expression="CarShow"/>
 		<put-attribute name="menu"
                value="/WEB-INF/pages/common/language_frag.jsp" />
         <put-attribute name="login"
@@ -45,6 +46,7 @@
     </definition>
     <definition name="car" extends="template">
     	<put-attribute name="title" value="car.title"/>
+        <put-attribute name="description" value="/WEB-INF/pages/car/car_seo_content.jsp"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/car/car.jsp"/>
     </definition>
