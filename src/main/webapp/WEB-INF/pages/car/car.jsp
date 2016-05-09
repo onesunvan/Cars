@@ -18,6 +18,7 @@
         <c:if test="${not isAdmin}">
             <form action="<c:url value="/orders"/>" method="POST">
             	<input type="hidden" name="carId" value="${car.id}"/>
+            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             	<button type="submit" class="btn-link"><s:message code="car.ordercar"/></button>
             </form>
         </c:if>
@@ -25,6 +26,7 @@
             <c:choose>
                 <c:when test="${car.ifExists}">
                 	<form action="<c:url value="/cars/${car.id}"/>" method="POST">
+                		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type="hidden" name="_method" value="put" /> 
 						<input type="hidden" name="action" value="disable" />
 						<button type="submit" class="btn-link">
@@ -34,6 +36,7 @@
                 </c:when>
                 <c:otherwise>
                 	<form action="<c:url value="/cars/${car.id}"/>" method="POST">
+                		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type="hidden" name="_method" value="put" /> 
 						<input type="hidden" name="action" value="restore" />
 						<button type="submit" class="btn-link">

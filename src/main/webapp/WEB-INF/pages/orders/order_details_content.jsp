@@ -27,6 +27,7 @@
 								<c:choose>
 									<c:when test="${order.status == 'NEW_ORDER'}">
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="accept" />
 											<button type="submit" class="btn btn-primary ss">
@@ -34,6 +35,7 @@
 											</button>
 										</form>
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="decline" />
 											<button type="submit" class="btn btn-primary ss">
@@ -46,6 +48,7 @@
 									</c:when>
 									<c:when test="${order.status == 'RETURNED'}">
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="fine" />
 											<button type="submit" class="btn btn-primary ss">
@@ -53,6 +56,7 @@
 											</button>
 										</form>
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="close" />
 											<button type="submit" class="btn btn-primary ss">
@@ -72,6 +76,7 @@
 								<c:choose>
 									<c:when test="${order.status == 'ACCEPTED'}">
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="pay" />
 											<button type="submit" class="btn btn-primary ss">
@@ -84,6 +89,7 @@
 									</c:when>
 									<c:when test="${order.status == 'IN_USE'}">
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="return" />
 											<button type="submit" class="btn btn-primary ss">
@@ -93,6 +99,7 @@
 									</c:when>
 									<c:when test="${order.status == 'FINED'}">
 										<form action="<c:url value="/orders/${order.id}"/>" method="POST">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 											<input type="hidden" name="_method" value="put" /> 
 											<input type="hidden" name="action" value="pay-fine" />
 											<button type="submit" class="btn btn-primary ss">

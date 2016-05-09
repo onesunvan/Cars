@@ -27,6 +27,7 @@
             username-parameter="username"
             password-parameter="password" />
         <logout logout-success-url="/" />
+        <csrf/>
     </http>
  
     <authentication-manager>

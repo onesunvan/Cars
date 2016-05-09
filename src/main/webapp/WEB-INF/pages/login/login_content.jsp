@@ -37,6 +37,7 @@
                 </tr>
             </table>
             <button type="submit" class="btn btn-primary ss"><s:message code="label.login"/></button>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
         <form action="<c:url value="/registration"/>" method="GET">
             <button type="submit" class="btn btn-primary ss"><s:message code="label.registration"/></button>
