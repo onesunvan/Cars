@@ -14,13 +14,12 @@ import carshow.validations.FieldMatch;
 public class UserForm {
     
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 50)
     private String firstName;
     
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 50)
     private String lastName;
-    
     
     @NotEmpty
     @Size(min = 4, max = 25)

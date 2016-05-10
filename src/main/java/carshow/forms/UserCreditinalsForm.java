@@ -14,11 +14,11 @@ import carshow.validations.FieldMatch;
 public class UserCreditinalsForm {
     
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 50)
     private String firstName;
     
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 50)
     private String lastName;
 
     @Email

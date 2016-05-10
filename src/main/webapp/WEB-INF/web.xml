@@ -14,6 +14,14 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <filter>
+    <filter-name>XSSFilter</filter-name>
+    <filter-class>carshow.filters.XSSFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>XSSFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
     <filter-name>HiddenHttpMethodFilter</filter-name>
     <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
   </filter>
@@ -41,6 +49,10 @@
             classpath:/jpa-repositories.xml,
             classpath:/services.xml
         </param-value>
+  </context-param>
+  <context-param>
+	<param-name>defaultHtmlEscape</param-name>
+	<param-value>true</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
