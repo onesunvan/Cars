@@ -3,52 +3,66 @@
 "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition name="login" 
-            template="/WEB-INF/pages/common/template.jsp">
-        <put-attribute name="title" value="welcome.title"/>
-        <put-attribute name="menu"
+	<definition name="template" template="/WEB-INF/pages/common/template.jsp">
+		<put-attribute name="title" value="carshow.title"/>
+		<put-attribute name="description" expression="CarShow"/>
+		<put-attribute name="menu"
                value="/WEB-INF/pages/common/language_frag.jsp" />
-        <put-attribute name="content"
-            value="/WEB-INF/pages/login/login_content.jsp"/>
-    </definition>
-    <definition name="welcome" extends="login">
-        <put-attribute name="content"
-            value="/WEB-INF/pages/main/welcome_content.jsp"/>
         <put-attribute name="login"
             value="/WEB-INF/pages/login/login_menu.jsp"/>
-    </definition>
-    <definition name="admin" extends="login">
+	</definition>
+    <definition name="login" 
+            extends="template">
+        <put-attribute name="title" value="login.title"/>
         <put-attribute name="content"
-            value="/WEB-INF/pages/admin/admin_content.jsp"/>
+            value="/WEB-INF/pages/login/login_content.jsp"/>
+       	<put-attribute name="login"
+            value=""/>
     </definition>
-    <definition name="registration" extends="login">
+    <definition name="registration" extends="template">
+    	<put-attribute name="title" value="registration.title"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/registration/registration_content.jsp"/>
     </definition>
-    <definition name="user_edit" extends="welcome">
+    <definition name="user_edit" extends="template">
+    	<put-attribute name="title" value="user.edit.title"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/edit-user/user_edit_content.jsp"/>
     </definition>
-    <definition name="add-content" extends="welcome">
+    <definition name="add-content" extends="template">
+    	<put-attribute name="title" value="add.content.title"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/admin/add-content_content.jsp"/>
     </definition>
     <definition name="user-datas" template="/WEB-INF/pages/common/user-datas.jsp"/>
-    <definition name="edit-password" extends="welcome">
+    <definition name="edit-password" extends="template">
+    	<put-attribute name="title" value="edit.password.title"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/edit-user/edit-password_content.jsp"/>
     </definition>
-    <definition name="cars" template="/WEB-INF/pages/main/dynamic_cars.jsp"/>
-    <definition name="car" extends="welcome">
+    <definition name="cars" extends="template">
+    	<put-attribute name="content"
+            value="/WEB-INF/pages/car/cars.jsp"/>
+    </definition>
+    <definition name="car" extends="template">
+    	<put-attribute name="title" value="car.title"/>
+        <put-attribute name="description" value="/WEB-INF/pages/car/car_seo_content.jsp"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/car/car.jsp"/>
     </definition>
-    <definition name="errorpage" extends="welcome">
+    <definition name="errorpage" extends="template">
+    	<put-attribute name="title" value="error.title"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/common/error-content.jsp"/>
     </definition>
-    <definition name="orders" extends="welcome">
+    <definition name="orders" extends="template">
+    	<put-attribute name="title" value="orders.title"/>
         <put-attribute name="content"
             value="/WEB-INF/pages/orders/orders_content.jsp"/>
+    </definition>
+    <definition name="order-detail" extends="template">
+    	<put-attribute name="title" value="orders.details.title"/>
+        <put-attribute name="content"
+            value="/WEB-INF/pages/orders/order_details_content.jsp"/>
     </definition>
 </tiles-definitions>

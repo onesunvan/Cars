@@ -6,21 +6,20 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
- 
+ 	<global-method-security secured-annotations="enabled" />
+ 	
     <beans:bean id="webexpressionHandler" 
                 class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
     
-    <http auto-config="true">
-        <intercept-url pattern="/admin**" access="ROLE_ADMIN" />
-        <intercept-url pattern="/editUser" access="ROLE_USER" />
-        <intercept-url pattern="/editPassword" access="ROLE_USER" />
-        <intercept-url pattern="/avatarImg" access="ROLE_USER" />
-        <intercept-url pattern="/addContent" access="ROLE_ADMIN" />
-        <intercept-url pattern="/bookCar" access="ROLE_USER" />
-        <intercept-url pattern="/showOrders" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/showMyOrders" access="ROLE_USER"/>
-        <intercept-url pattern="/acceptOrder**" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/declineOrder**" access="ROLE_ADMIN"/>
+    <http auto-config="true" use-expressions="true">
+    	<access-denied-handler error-page="/error/403" />
+        <intercept-url pattern="/editUser" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/editPassword" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/avatarImg" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/addContent" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/orders" method="POST" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/orders/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/users/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
         <form-login 
             login-page="/login" 
             default-target-url="/" 
@@ -28,6 +27,7 @@
             username-parameter="username"
             password-parameter="password" />
         <logout logout-success-url="/" />
+        <csrf/>
     </http>
  
     <authentication-manager>

@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td>
-                    ${userDTO.passport}
+                    ${userDTO.phoneNumber}
                 </td>
             </tr>
             <tr>

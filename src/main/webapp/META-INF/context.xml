@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/Cars">
+<Context allowCasualMultipartParsing="true" antiJARLocking="true" path="/Cars">
 	<ResourceLink global="jdbc/PostgreSQLDS" name="jdbc/PostgreSQLDS" type="javax.sql.DataSource"/>
 </Context>

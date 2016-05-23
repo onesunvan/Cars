@@ -12,7 +12,7 @@
                  acceptCharset="UTF-8">
             <h3><s:message code="label.registration"/></h3>
             <sf:errors path="" cssClass="error"/>
-            <table align="center">
+            <table style="margin: 0 auto;">
                 <tr>
                     <td>
                         <label for="name"><s:message code="login.name"/></label>
@@ -105,22 +105,22 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="passportF"><s:message code="registration.passport"/></label>
+                        <label for="phoneNumberF"><s:message code="registration.phonenumber"/></label>
                     </td>
                     <td>
-                        <c:set var="loginNameText"><s:message code="registration.passport"/></c:set>
-                        <sf:input path="passport"
-                                  class="form-control" id="passportF" placeholder="${loginNameText}"/>
+                        <c:set var="loginNameText"><s:message code="registration.phonenumber"/></c:set>
+                        <sf:input path="phoneNumber"
+                                  class="form-control" id="phoneNumberF" placeholder="${loginNameText}"/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors path="passport" cssClass="error"/>
+                        <sf:errors path="phoneNumber" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <s:message code="addcontent.image"/>
+                        <s:message code="user.image"/>
                     </td>
                     <td>
                         <input type="file" name="uploadFile" class=" btn-mini"/>

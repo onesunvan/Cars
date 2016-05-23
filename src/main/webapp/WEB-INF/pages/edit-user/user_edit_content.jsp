@@ -11,7 +11,7 @@
                  enctype="multipart/form-data">
             <h3><s:message code="useredit.title"/></h3>
             <sf:errors cssClass="error" path=""/>
-            <table align="center">
+            <table style="margin: 0 auto;">
                 <tr>
                     <td>
                         <label for="first_name"><s:message code="registration.first_name"/></label>
@@ -59,22 +59,22 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="passportF"><s:message code="registration.passport"/></label>
+                        <label for="phoneNumberF"><s:message code="registration.phonenumber"/></label>
                     </td>
                     <td>
-                        <c:set var="loginNameText"><s:message code="registration.passport"/></c:set>
-                        <sf:input path="passport"
-                                  class="form-control" id="passportF" placeholder="${loginNameText}"/>
+                        <c:set var="loginNameText"><s:message code="registration.phonenumber"/></c:set>
+                        <sf:input path="phoneNumber"
+                                  class="form-control" id="phoneNumberF" placeholder="${loginNameText}"/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <sf:errors cssClass="error" path="passport"/>
+                        <sf:errors cssClass="error" path="phoneNumber"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <s:message code="addcontent.image"/>
+                        <s:message code="user.image"/>
                     </td>
                     <td>
                         <input type="file" name="uploadFile" class=" btn-mini"/>

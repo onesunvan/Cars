@@ -15,7 +15,7 @@
         </c:if>
         <c:url value="/j_spring_security_check" var="loginUrl"/>
         <form action="${loginUrl}" method="POST">
-            <table align="center">
+            <table style="margin: 0 auto;">
                 <tr>
                     <td>
                         <label for="name"><s:message code="login.name"/></label>
@@ -37,6 +37,7 @@
                 </tr>
             </table>
             <button type="submit" class="btn btn-primary ss"><s:message code="label.login"/></button>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
         <form action="<c:url value="/registration"/>" method="GET">
             <button type="submit" class="btn btn-primary ss"><s:message code="label.registration"/></button>
