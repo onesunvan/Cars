@@ -228,6 +228,7 @@
 				<configuration>
 					<port>${tomcat.http.port}</port>
 					<useTestClasspath>true</useTestClasspath>
+					<contextFile>tomcat/context.xml</contextFile>
 				</configuration>
 			</plugin>
 		</plugins>
