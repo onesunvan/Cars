@@ -12,15 +12,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class CarForm {
     
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 100)
     private String brand;
     
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 100)
     private String model;
     
     @NotNull
-    @Min(value = 200)
+    @Min(value = 5)
     private Integer price;
 
     public String getBrand() {
