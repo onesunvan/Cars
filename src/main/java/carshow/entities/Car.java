@@ -21,12 +21,12 @@ import javax.persistence.Table;
     @NamedQuery(name = "Car.findIfExistsIfAvailable", query = "SELECT c FROM Car c "
     		+ "WHERE c.ifExists=TRUE AND NOT EXISTS "
     		+ "(SELECT o FROM CarOrder o "
-    		+ "WHERE o.status <> carshow.entities.OrderStatus.NEW_ORDER AND o.status<>carshow.entities.OrderStatus.DECLINED AND o.status<>carshow.entities.OrderStatus.CLOSED)"),
+    		+ "WHERE o.car=c AND (o.status <> carshow.entities.OrderStatus.NEW_ORDER AND o.status<>carshow.entities.OrderStatus.DECLINED AND o.status<>carshow.entities.OrderStatus.CLOSED))"),
     @NamedQuery(name = "Car.findLike", query = "SELECT u FROM Car u WHERE u.brand LIKE :filter OR u.model LIKE :filter"),
     @NamedQuery(name = "Car.findLikeIfExistsIfAvailable", query = "SELECT u FROM Car u WHERE u.ifExists=TRUE AND "
             + "(u.brand LIKE :filter OR u.model LIKE :filter) AND NOT EXISTS "
             + "(SELECT o FROM CarOrder o "
-            + "WHERE o.status <> carshow.entities.OrderStatus.NEW_ORDER AND o.status<>carshow.entities.OrderStatus.DECLINED AND o.status<>carshow.entities.OrderStatus.CLOSED)")
+            + "WHERE o.car=u AND (o.status <> carshow.entities.OrderStatus.NEW_ORDER AND o.status<>carshow.entities.OrderStatus.DECLINED AND o.status<>carshow.entities.OrderStatus.CLOSED))")
 })
 public class Car implements Serializable {
     private static final long serialVersionUID = 1L;
