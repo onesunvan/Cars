@@ -10,7 +10,7 @@
 	</appender>
 
 	<appender name="springAppender" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="spring-details.log" />
+		<param name="file" value="${env:OPENSHIFT_LOG_DIR}/spring-details.log" />
 		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{MM/dd/yyyy HH:mm:ss}  [%t]:%c{5}.%M()%L %m%n" />
@@ -44,7 +44,7 @@
 
 	<root>
 		<priority value="debug" />
-		<!-- <appender-ref ref="springAppender" />  -->
-		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="springAppender" />
+		<!-- <appender-ref ref="STDOUT"/> -->
 	</root>
 </log4j:configuration>
